@@ -1,0 +1,49 @@
+.display_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    text-align: center;
+}
+
+.display_table thead tr {
+    background-color: #ffb162;
+    color: white;
+}
+
+.display_table th, td {
+    padding: 0.75rem;
+}
+
+.display_table tbody tr:nth-of-type(even) {
+    background-color: #e1dcdce8;
+}
+
+.display_ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    color: blue;
+}
+
+.description {
+    width: 25%
+}
+
+.institutes {
+    width: 15%;
+}
+
+.publications {
+    width: 10%
+}
+
+.font-awesome-button {
+    cursor: pointer;
+}
