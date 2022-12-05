@@ -7,27 +7,39 @@ import Basic from "./components/Basic";
 import Scientometry from "./components/Scientometry";
 import Header from "./components/Header";
 import Matrix from "./components/Matrix";
+import Development from "./components/Development";
 
 function App() {
   const [toolsData, setToolsData] = useState([]);
   const [displayOverview, setDisplayOverview] = useState(true);
   const [displayBasic, setDisplayBasic] = useState(false);
   const [displayScientometry, setDisplayScientometry] = useState(false);
+  const [displayDevelopment, setDisplayDevelopment] = useState(false);
 
   const onDisplayOverview = () => {
     setDisplayOverview(true);
     setDisplayBasic(false);
     setDisplayScientometry(false);
+    setDisplayDevelopment(false);
   };
 
   const onDisplayBasic = () => {
     setDisplayBasic(true);
     setDisplayOverview(false);
     setDisplayScientometry(false);
+    setDisplayDevelopment(false);
   };
 
   const onDisplayScientometry = () => {
     setDisplayScientometry(true);
+    setDisplayBasic(false);
+    setDisplayOverview(false);
+    setDisplayDevelopment(false);
+  };
+
+  const onDisplayDevelopment = () => {
+    setDisplayDevelopment(true);
+    setDisplayScientometry(false);
     setDisplayBasic(false);
     setDisplayOverview(false);
   };
@@ -52,15 +64,18 @@ function App() {
         onDisplayOverview={onDisplayOverview}
         onDisplayBasic={onDisplayBasic}
         onDisplayScientometry={onDisplayScientometry}
+        onDisplayDevelopment={onDisplayDevelopment}
         displayOverview={displayOverview}
         displayBasic={displayBasic}
         displayScientometry={displayScientometry}
+        displayDevelopment={displayDevelopment}
         getDataFromBackend={getDataFromBackend}
         amount={toolsData.length}
       ></Header>
       {displayOverview && <Overview tools={toolsData}></Overview>}
       {displayBasic && <Basic tools={toolsData}></Basic>}
       {displayScientometry && <Scientometry tools={toolsData}></Scientometry>}
+      {displayDevelopment && <Development tools={toolsData}></Development>}
       <Matrix tools={toolsData}></Matrix>
     </div>
   );

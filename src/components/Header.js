@@ -13,6 +13,7 @@ const Header = (props) => {
         {!props.displayOverview && <button onClick={props.onDisplayOverview}>Display overview</button>}
         {!props.displayBasic && <button onClick={props.onDisplayBasic}>Display basic</button>}
         {!props.displayScientometry && <button onClick={props.onDisplayScientometry}>Display scientometry</button>}
+        {!props.displayDevelopment && <button onClick={props.onDisplayDevelopment}>Display development</button>}
       </div>
     </div>
   );
