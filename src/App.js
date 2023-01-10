@@ -8,6 +8,7 @@ import Scientometry from "./components/Scientometry";
 import Header from "./components/Header";
 import Matrix from "./components/Matrix";
 import Development from "./components/Development";
+import Graphs from "./components/Graphs";
 
 function App() {
   const [toolsData, setToolsData] = useState([]);
@@ -58,6 +59,8 @@ function App() {
     setToolsData(await data.json());
   };
 
+  const display = config.getCurrentDisplay();
+
   return (
     <div>
       <Header
@@ -72,11 +75,12 @@ function App() {
         getDataFromBackend={getDataFromBackend}
         amount={toolsData.length}
       ></Header>
-      {displayOverview && <Overview tools={toolsData}></Overview>}
-      {displayBasic && <Basic tools={toolsData}></Basic>}
-      {displayScientometry && <Scientometry tools={toolsData}></Scientometry>}
-      {displayDevelopment && <Development tools={toolsData}></Development>}
-      <Matrix tools={toolsData}></Matrix>
+      {display === 'table' && displayOverview && <Overview tools={toolsData}></Overview>}
+      {display === 'table' && displayBasic && <Basic tools={toolsData}></Basic>}
+      {display === 'table' && displayScientometry && <Scientometry tools={toolsData}></Scientometry>}
+      {display === 'table' && displayDevelopment && <Development tools={toolsData}></Development>}
+      {display === 'matrix' && <Matrix tools={toolsData}></Matrix>}
+      {display === 'graphs' && <Graphs tools={toolsData}></Graphs>}
     </div>
   );
 }
