@@ -19,10 +19,10 @@
     width: 7rem;
 }
 
-.blue_link {
+.navlink-class {
     text-decoration: none;
 }
 
-.blue_link:visited {
+.navlink-class:visited {
     color: blue;
 }

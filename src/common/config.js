@@ -1,6 +1,6 @@
 export default class config {
     static getCurrentId() {
-        return "R?e6QQ\\]eH";
+        return "<ye``Q`6C3";
     }
     static getCurrentDisplay() {
         return "matrix";

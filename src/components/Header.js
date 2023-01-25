@@ -1,21 +1,30 @@
 import React from "react";
 import "../styles/Header.css";
+import { Link } from "react-router-dom";
+import 'react-dropdown/style.css';
+import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/slide.css';
 
 import elixirLogo from "../images/elixir-logo.png";
 
 const Header = (props) => {
   return (
-    <div className="container">
+    <nav className="container">
       <img src={elixirLogo} alt="Elixir logo" />
       <div className="text">There is a total number of {props.amount} tools available</div>
-      <div className="button-wrapper">
+      <div className="wrapper">
         <button onClick={props.getDataFromBackend}>Fetch data</button>
-        {!props.displayOverview && <button onClick={props.onDisplayOverview}>Display overview</button>}
-        {!props.displayBasic && <button onClick={props.onDisplayBasic}>Display basic</button>}
-        {!props.displayScientometry && <button onClick={props.onDisplayScientometry}>Display scientometry</button>}
-        {!props.displayDevelopment && <button onClick={props.onDisplayDevelopment}>Display development</button>}
+        <Menu menuButton={<MenuButton>View</MenuButton>} transition>
+          <MenuItem><Link to="/">Overview</Link></MenuItem>
+          <MenuItem><Link to="/basic">Basic</Link></MenuItem>
+          <MenuItem><Link to="/scientometry">Scientometry</Link></MenuItem>
+          <MenuItem><Link to="/development">Development</Link></MenuItem>
+          <MenuItem><Link to="/graphs">Graphs</Link></MenuItem>
+          <MenuItem><Link to="/matrix">Matrix</Link></MenuItem>
+        </Menu>
       </div>
-    </div>
+    </nav>
   );
 };
 
