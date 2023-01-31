@@ -2,7 +2,8 @@
   "name": "biotools-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://147.251.115.167/frontend",
+  "homepage": "http://147.251.115.167",
+  "proxy": "http://localhost:81",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
