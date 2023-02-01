@@ -1,4 +1,6 @@
 import React from "react";
+import { Label } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
 import "../styles/Table.css";
 
 import {
@@ -48,6 +50,17 @@ const tableIcons = {
   };
 
 const Basic = (props) => {
+
+  const addLabelToMaturity = (maturity) => {
+    if (maturity === 'Emerging') {
+      return <Label color="blue">{maturity}</Label>
+    } else if (maturity === 'Mature'){
+      return <Label color="green">{maturity}</Label>
+    } else if (maturity === 'Legacy'){
+      return <Label color="red">{maturity}</Label>
+    }
+  }
+
   const getPlatformIcon = (platform) => {
     if (platform === "Windows") {
       return <FontAwesomeIcon icon={faWindows} />;
@@ -177,7 +190,7 @@ const Basic = (props) => {
               </ul>
             ),
             license: tool.license,
-            maturity: tool.maturity,
+            maturity: addLabelToMaturity(tool.maturity),
             platforms: (
               <ul className="display_ul">
                 {tool.platforms.map((p) => (
