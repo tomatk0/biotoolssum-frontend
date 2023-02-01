@@ -1,51 +1,131 @@
 import React from "react";
-import { BarChart, Bar, XAxis, YAxis } from "recharts";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import HighchartsReact from "highcharts-react-official";
+var Highcharts = require("highcharts");
+require("highcharts/modules/exporting")(Highcharts);
 
 const Graphs = (props) => {
-  const convertCountToInt = (arr) => {
-    const new_arr = [];
-    for (let i = 0; i < arr.length; i++) {
-      new_arr.push({ year: arr[i].year, count: parseInt(arr[i].count) });
+  const getYearsList = (minYear, maxYear) => {
+    const result = [];
+    for (let i = minYear; i <= maxYear; i++) {
+      result.push(i.toString());
     }
-    return new_arr;
+    return result;
+  };
+
+  const getYearsForSeries = (citationsList, years) => {
+    const result = [];
+    for (let i = 0; i < years.length; i++) {
+      const year = years[i];
+      let res = citationsList.filter((citation) => citation.year === year)[0];
+      if (res) {
+        result.push(parseInt(res.count));
+      } else {
+        result.push(0);
+      }
+    }
+    return result;
+  };
+
+  const getSeries = (tool) => {
+    const result = [];
+    const years = getYearsList(tool.min_year, tool.max_year);
+    for (let i = 0; i < tool.publications.length; i++) {
+      const publication = tool.publications[i];
+      const citations = publication.citations_list;
+      if (citations.length !== 0) {
+        const yearsFromSeries = getYearsForSeries(citations, years);
+        if (yearsFromSeries.reduce((a, b) => a + b, 0) > 0) {
+          result.push({
+            name: publication.pmid,
+            data: yearsFromSeries,
+          });
+        }
+      }
+    }
+    if (result.length > 1) {
+      const totalCitations = [...result[0].data];
+      for (let i = 1; i < result.length; i++) {
+        const series = result[i].data;
+        for (let j = 0; j < series.length; j++) {
+          totalCitations[j] += series[j];
+        }
+      }
+      result.push({
+        name: "Total citations",
+        data: totalCitations,
+      })
+    }
+
+    return result;
+  };
+
+  const getNewOptions = (tool) => {
+    return {
+      title: {
+        text: `Citations for ${tool.name}`,
+      },
+
+      exporting: {
+        filename: `chart_${tool.name}`,
+        buttons: {
+          contextButton: {
+            text: "Generate",
+            symbolY: 15,
+          },
+        },
+        chartOptions: {
+          plotOptions: {
+            series: {
+              dataLabels: {
+                enabled: true,
+              },
+            },
+          },
+        },
+      },
+
+      chart: {
+        type: "column",
+      },
+
+      tooltip: {
+        shared: true,
+      },
+
+      xAxis: {
+        categories: getYearsList(tool.min_year, tool.max_year),
+      },
+
+      yAxis: {
+        title: {
+          text: "Citations",
+        },
+        allowDecimals: false,
+      },
+
+      plotOptions: {
+        series: {
+          pointWidth: 20,
+        }
+      },
+
+      series: getSeries(tool),
+    };
   };
 
   return (
     <div>
-      {props.tools.map((tool) => (
+      {props.tools.map(
+        (tool) =>
         <div>
-          {tool.publications.map((p) => (
-            <div>
-              {p.citations_list.length !== 0 && (
-                <div>
-                  <div>
-                    <a href={tool.homepage}>{tool.name}</a>{" "}
-                    {tool.version !== "" && tool.version}
-                    <a href={tool.bio_link}>
-                      {" "}
-                      <FontAwesomeIcon
-                        className="font-awesome-button"
-                        icon={faCircleQuestion}
-                      />
-                    </a>
-                  </div>
-                  <BarChart
-                    width={600}
-                    height={300}
-                    data={convertCountToInt(p.citations_list)}
-                  >
-                    <XAxis dataKey="year" stroke="#000000" />
-                    <YAxis stroke="#000000" />
-                    <Bar dataKey="count" fill="#F4BE60" barSize={30} />
-                  </BarChart>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      ))}
+        {getSeries(tool).length !== 0 && (
+          <HighchartsReact
+            highcharts={Highcharts}
+            options={getNewOptions(tool)}
+          ></HighchartsReact>
+        )}
+      </div>
+      )}
     </div>
   );
 };

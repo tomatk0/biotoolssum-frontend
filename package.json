@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "http://147.251.115.167",
-  "proxy": "http://localhost:81",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
@@ -16,7 +15,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
-    "highcharts": "^10.3.1",
+    "highcharts": "^10.3.3",
+    "highcharts-react-official": "^3.1.0",
     "http-proxy-middleware": "^2.0.6",
     "material-table": "^1.69.3",
     "mdbreact": "^5.2.0",

@@ -53,7 +53,7 @@ const Basic = (props) => {
       return <FontAwesomeIcon icon={faWindows} />;
     } else if (platform === "Linux") {
       return <FontAwesomeIcon icon={faLinux} />;
-    } else if (platform === "Apple") {
+    } else if (platform === "Mac") {
       return <FontAwesomeIcon icon={faApple} />;
     }
   };
@@ -107,7 +107,7 @@ const Basic = (props) => {
           ]}
           options={{
             paging: true,
-            pageSize: 10,
+            pageSize: 20,
             headerStyle: {
               backgroundColor: "#ffb162",
               color: "white",
@@ -181,7 +181,8 @@ const Basic = (props) => {
             platforms: (
               <ul className="display_ul">
                 {tool.platforms.map((p) => (
-                  <li key={p.name}>{getPlatformIcon(p.name)}</li>
+                  <li key={p.name}>{getPlatformIcon(p.name)}{console.log(p.name)}</li>
+                  
                 ))}
               </ul>
             ),

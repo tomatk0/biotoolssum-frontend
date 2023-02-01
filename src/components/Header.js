@@ -20,7 +20,7 @@ const Header = (props) => {
           <MenuItem><Link to="/basic">Basic</Link></MenuItem>
           <MenuItem><Link to="/scientometry">Scientometry</Link></MenuItem>
           <MenuItem><Link to="/development">Development</Link></MenuItem>
-          <MenuItem><Link to="/graphs">Graphs</Link></MenuItem>
+          <MenuItem><Link to="/graphs">Citations graphs</Link></MenuItem>
           <MenuItem><Link to="/matrix">Matrix</Link></MenuItem>
         </Menu>
       </div>

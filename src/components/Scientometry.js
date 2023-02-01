@@ -97,7 +97,7 @@ const Scientometry = (props) => {
           ]}
           options={{
             paging: true,
-            pageSize: 10,
+            pageSize: 20,
             headerStyle: {
               backgroundColor: "#ffb162",
               color: "white",
