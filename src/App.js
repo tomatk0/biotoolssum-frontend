@@ -13,6 +13,11 @@ import Graphs from "./components/Graphs";
 
 function App() {
   const [toolsData, setToolsData] = useState([]);
+  const [query, setQuery] = useState("")
+
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+  }
 
   const getDataFromBackend = async () => {
     const data = await fetch("http://147.251.115.167/data", {
@@ -22,7 +27,7 @@ function App() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: config.getCurrentId(),
+        id: query,
       }),
     });
     setToolsData(await data.json());
@@ -33,6 +38,7 @@ function App() {
       <Header
         getDataFromBackend={getDataFromBackend}
         amount={toolsData.length}
+        onChangeQuery={handleChange}
       ></Header>
       <Routes>
         <Route path="/" element={<Overview tools={toolsData}></Overview>}></Route>

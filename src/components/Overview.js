@@ -145,7 +145,7 @@ const Overview = (props) => {
                 </div>
                 <ul className="display_ul">
                   {tool.tool_types.map((t) => (
-                    <li className="label">
+                    <li key={t.name} className="label">
                       <Label color="yellow">{t.name}</Label>
                     </li>
                   ))}
