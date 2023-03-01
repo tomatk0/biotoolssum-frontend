@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useState } from "react";
-import config from "./common/config";
 import { Route, Routes } from "react-router-dom";
 
 import Overview from "./components/Overview";
@@ -10,6 +9,7 @@ import Header from "./components/Header";
 import Matrix from "./components/Matrix";
 import Development from "./components/Development";
 import Graphs from "./components/Graphs";
+import DataLifeCycle from "./components/DataLifeCycle";
 
 function App() {
   const [toolsData, setToolsData] = useState([]);
@@ -46,6 +46,16 @@ function App() {
         <Route path="/scientometry" element={<Scientometry tools={toolsData}></Scientometry>}></Route>
         <Route path="/development" element={<Development tools={toolsData}></Development>}></Route>
         <Route path="/graphs" element={<Graphs tools={toolsData}></Graphs>}></Route>
+
+        <Route path="/datalifecycle" element={<DataLifeCycle></DataLifeCycle>}></Route>
+        <Route path="/datalifecycle/reuse" element={<Overview></Overview>}></Route>
+        <Route path="/datalifecycle/plan" element={<Overview></Overview>}></Route>
+        <Route path="/datalifecycle/collect" element={<Overview></Overview>}></Route>
+        <Route path="/datalifecycle/process" element={<Overview></Overview>}></Route>
+        <Route path="/datalifecycle/analyse" element={<Overview></Overview>}></Route>
+        <Route path="/datalifecycle/preserve" element={<Overview></Overview>}></Route>
+        <Route path="/datalifecycle/share" element={<Overview></Overview>}></Route>
+
         <Route path="/matrix" element={<Matrix tools={toolsData}></Matrix>}></Route>
         <Route path="/matrix/dna-1d-services" element={<Overview tools={toolsData} query={"dna sequence"}></Overview>}></Route>
         <Route path="/matrix/dna-2d-services" element={<Overview tools={toolsData} query={"dna secondary structure"}></Overview>}></Route>

@@ -131,7 +131,6 @@ const Basic = (props) => {
             },
             showTitle: false,
             sorting: false,
-            exportButton: true,
             searchFieldAlignment: "left",
             toolbarButtonAlignment: "left",
             

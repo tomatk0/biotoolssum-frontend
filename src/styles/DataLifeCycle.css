@@ -1,0 +1,54 @@
+.st0 {
+    fill:#FA484B;
+    transition: fill 0.3s;
+}
+
+.st1{
+    fill:#FFFFFF; 
+    pointer-events: none;
+}
+
+.st2{
+    fill:#4176A5;
+    transition: fill 0.3s;
+}
+
+.st3{
+    fill:#32B890;
+    transition: fill 0.3s;
+}
+
+.st4{
+    fill:#8ABA56;
+    transition: fill 0.3s;
+}
+
+.st5{
+    fill:#F67028;
+    transition: fill 0.3s;
+}
+
+.st6{
+    fill:#FAC54B;
+    transition: fill 0.3s;
+}
+
+.st7{
+    fill:#9E51AD;
+    transition: fill 0.3s;
+}
+
+.st0:hover, .st2:hover, .st3:hover, .st4:hover, .st5:hover, .st6:hover, .st7:hover{
+    fill:#73757d;
+    cursor: pointer;
+}
+
+text {
+    pointer-events: none;
+}
+
+.svg-image{
+    display: block;
+    margin: auto;
+    margin-top: 10rem;
+}

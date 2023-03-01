@@ -11,7 +11,7 @@ import elixirLogo from "../images/elixir-logo.png";
 const Header = (props) => {
 
   return (
-    <nav className="container">
+    <nav className="container-header">
       <img src={elixirLogo} alt="Elixir logo" />
       <div className="text">There is a total number of {props.amount} tools available</div>
       <div className="wrapper">
@@ -23,6 +23,7 @@ const Header = (props) => {
           <MenuItem><Link to="/scientometry">Scientometry</Link></MenuItem>
           <MenuItem><Link to="/development">Development</Link></MenuItem>
           <MenuItem><Link to="/graphs">Citations graphs</Link></MenuItem>
+          <MenuItem><Link to="/datalifecycle">Data life cycle</Link></MenuItem>
           <MenuItem><Link to="/matrix">Matrix</Link></MenuItem>
         </Menu>
       </div>

@@ -49,31 +49,31 @@ const Matrix = (props) => {
       <tbody>
         <tr>
           <td className="grey_square">DNA</td>
-          <td><Link className="blue_link" to="/matrix/dna-1d-services"><img src={dna1d} alt="dna1d" />{getNumberOfQueries("dna sequence")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/dna-2d-services"><img src={dna2d} alt="dna2d" />{getNumberOfQueries("dna secondary structure")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/dna-3d-services"><img src={dna3d} alt="dna3d" />{getNumberOfQueries("dna structure")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/dna-xd-services"><img src={dnaxd} alt="dnaxd" />{getNumberOfQueries("genomics")}</Link></td>
+          <td><Link to="/matrix/dna-1d-services"><img src={dna1d} alt="dna1d" />{getNumberOfQueries("dna sequence")}</Link></td>
+          <td><Link to="/matrix/dna-2d-services"><img src={dna2d} alt="dna2d" />{getNumberOfQueries("dna secondary structure")}</Link></td>
+          <td><Link to="/matrix/dna-3d-services"><img src={dna3d} alt="dna3d" />{getNumberOfQueries("dna structure")}</Link></td>
+          <td><Link to="/matrix/dna-xd-services"><img src={dnaxd} alt="dnaxd" />{getNumberOfQueries("genomics")}</Link></td>
         </tr>
         <tr>
           <td className="grey_square">RNA</td>
-          <td><Link className="blue_link" to="/matrix/rna-1d-services"><img src={rna1d} alt="rna1d" />{getNumberOfQueries("rna sequence")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/rna-2d-services"><img src={rna2d} alt="rna2d" />{getNumberOfQueries("rna secondary structure")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/rna-3d-services"><img src={rna3d} alt="rna3d" />{getNumberOfQueries("rna structure")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/rna-xd-services"><img src={rnaxd} alt="rnaxd" />{getNumberOfQueries("rna omics")}</Link></td>
+          <td><Link to="/matrix/rna-1d-services"><img src={rna1d} alt="rna1d" />{getNumberOfQueries("rna sequence")}</Link></td>
+          <td><Link to="/matrix/rna-2d-services"><img src={rna2d} alt="rna2d" />{getNumberOfQueries("rna secondary structure")}</Link></td>
+          <td><Link to="/matrix/rna-3d-services"><img src={rna3d} alt="rna3d" />{getNumberOfQueries("rna structure")}</Link></td>
+          <td><Link to="/matrix/rna-xd-services"><img src={rnaxd} alt="rnaxd" />{getNumberOfQueries("rna omics")}</Link></td>
         </tr>
         <tr>
           <td className="grey_square">Protein</td>
-          <td><Link className="blue_link" to="/matrix/protein-1d-services"><img src={protein1d} alt="protein1d" />{getNumberOfQueries("protein sequence")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/protein-2d-services"><img src={protein2d} alt="protein2d" />{getNumberOfQueries("protein secondary structure")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/protein-3d-services"><img src={protein3d} alt="protein3d" />{getNumberOfQueries("protein structure")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/protein-xd-services"><img src={proteinxd} alt="proteinxd" />{getNumberOfQueries("protein omics")}</Link></td>
+          <td><Link to="/matrix/protein-1d-services"><img src={protein1d} alt="protein1d" />{getNumberOfQueries("protein sequence")}</Link></td>
+          <td><Link to="/matrix/protein-2d-services"><img src={protein2d} alt="protein2d" />{getNumberOfQueries("protein secondary structure")}</Link></td>
+          <td><Link to="/matrix/protein-3d-services"><img src={protein3d} alt="protein3d" />{getNumberOfQueries("protein structure")}</Link></td>
+          <td><Link to="/matrix/protein-xd-services"><img src={proteinxd} alt="proteinxd" />{getNumberOfQueries("protein omics")}</Link></td>
         </tr>
         <tr>
           <td className="grey_square">Drugs and other small molecules</td>
-          <td><Link className="blue_link" to="/matrix/drug-1d-services"><img src={drug1d} alt="drug1d" />{getNumberOfQueries("small molecule primary sequence")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/drug-2d-services"><img src={drug2d} alt="drug2d" />{getNumberOfQueries("small molecule secondary structure")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/drug-3d-services"><img src={drug3d} alt="drug3d" />{getNumberOfQueries("small molecule structure")}</Link></td>
-          <td><Link className="blue_link" to="/matrix/drug-4d-services"><img src={drugxd} alt="drugxd" />{getNumberOfQueries("small molecule omics")}</Link></td>
+          <td><Link to="/matrix/drug-1d-services"><img src={drug1d} alt="drug1d" />{getNumberOfQueries("small molecule primary sequence")}</Link></td>
+          <td><Link to="/matrix/drug-2d-services"><img src={drug2d} alt="drug2d" />{getNumberOfQueries("small molecule secondary structure")}</Link></td>
+          <td><Link to="/matrix/drug-3d-services"><img src={drug3d} alt="drug3d" />{getNumberOfQueries("small molecule structure")}</Link></td>
+          <td><Link to="/matrix/drug-4d-services"><img src={drugxd} alt="drugxd" />{getNumberOfQueries("small molecule omics")}</Link></td>
         </tr>
       </tbody>
     </table>

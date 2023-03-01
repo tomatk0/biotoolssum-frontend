@@ -1,5 +1,6 @@
 .matrix_table {
     margin: auto;
+    margin-top: 5rem;
     text-align: center;
 }
 
@@ -15,8 +16,8 @@
 .grey_square {
     background-color: rgb(218, 216, 216);
     text-align: center;
-    height: 5rem;
-    width: 7rem;
+    height: 8rem;
+    width: 8rem;
 }
 
 .navlink-class {
