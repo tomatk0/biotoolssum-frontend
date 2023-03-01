@@ -13,7 +13,7 @@ const Header = (props) => {
   return (
     <nav className="container-header">
       <img src={elixirLogo} alt="Elixir logo" />
-      <div className="text">There is a total number of {props.amount} tools available</div>
+      <div className="text">{props.string} There is a total number of {props.amount} tools available</div>
       <div className="wrapper">
         <button onClick={props.getDataFromBackend}>Fetch data</button>
         <input type="text" onChange={props.onChangeQuery}></input>

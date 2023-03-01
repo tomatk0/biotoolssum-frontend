@@ -13,6 +13,7 @@ import DataLifeCycle from "./components/DataLifeCycle";
 
 function App() {
   const [toolsData, setToolsData] = useState([]);
+  const [toolsString, setToolsString] = useState("");
   const [query, setQuery] = useState("")
 
   const handleChange = (event) => {
@@ -30,13 +31,16 @@ function App() {
         id: query,
       }),
     });
-    setToolsData(await data.json());
+    const result = await data.json();
+    setToolsData(result.data);
+    setToolsString(result.resulting_string);
   };
 
   return (
     <>
       <Header
         getDataFromBackend={getDataFromBackend}
+        string={toolsString}
         amount={toolsData.length}
         onChangeQuery={handleChange}
       ></Header>
