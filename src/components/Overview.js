@@ -61,6 +61,7 @@ const Overview = (props) => {
   const listOfTools = props.query ? getToolsFromQuery() : props.tools;
 
   return (
+    
       <div className="display_table">
         <MaterialTable
           columns={[

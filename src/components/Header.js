@@ -5,18 +5,19 @@ import 'react-dropdown/style.css';
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
+import Exporting from "./Exporting";
 
 import elixirLogo from "../images/elixir-logo.png";
 
 const Header = (props) => {
-
   return (
     <nav className="container-header">
       <img src={elixirLogo} alt="Elixir logo" />
-      <div className="text">{props.string} There is a total number of {props.amount} tools available</div>
+      {props.amount === 0 ? <div></div> : <div className="text">{props.string} There is a total number of {props.amount} tools available</div>}
       <div className="wrapper">
         <button onClick={props.getDataFromBackend}>Fetch data</button>
         <input type="text" onChange={props.onChangeQuery}></input>
+        <Exporting data={props.data}></Exporting>
         <Menu menuButton={<MenuButton>View</MenuButton>} transition>
           <MenuItem><Link to="/">Overview</Link></MenuItem>
           <MenuItem><Link to="/basic">Basic</Link></MenuItem>

@@ -42,6 +42,7 @@ function App() {
         getDataFromBackend={getDataFromBackend}
         string={toolsString}
         amount={toolsData.length}
+        data={toolsData}
         onChangeQuery={handleChange}
       ></Header>
       <Routes>
