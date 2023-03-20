@@ -3,7 +3,7 @@
 }
 
 .display_table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
     margin: auto;
     text-align: center;
@@ -19,7 +19,7 @@
 }
 
 .display_table tbody tr:nth-of-type(even) {
-    background-color: #e1dcdce8;
+    background-color: #f3f3f3;
 }
 
 .display_ul {
@@ -58,3 +58,9 @@ a:visited {
     padding-bottom: 0.25rem;
     font-size: 0.75rem !important;
 }
+
+@media only screen and (max-width: 700px) {
+    .display_table {
+        width: 100%;
+    }
+  }

@@ -84,6 +84,7 @@ const Basic = (props) => {
             {
               title: "Name",
               field: "name",
+              width: "15%",
             },
             {
               title: "Inputs",
@@ -193,8 +194,7 @@ const Basic = (props) => {
             platforms: (
               <ul className="display_ul">
                 {tool.platforms.map((p) => (
-                  <li key={p.name}>{getPlatformIcon(p.name)}{console.log(p.name)}</li>
-                  
+                  <li key={p.name}>{getPlatformIcon(p.name)}</li>
                 ))}
               </ul>
             ),

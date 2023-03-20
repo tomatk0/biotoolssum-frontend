@@ -1,5 +1,7 @@
 import React from "react";
 import HighchartsReact from "highcharts-react-official";
+import '../styles/Graphs.css'
+
 var Highcharts = require("highcharts");
 require("highcharts/modules/exporting")(Highcharts);
 
@@ -114,7 +116,7 @@ const Graphs = (props) => {
   };
 
   return (
-    <div>
+    <div className="graph-container">
       {props.tools.map(
         (tool) =>
         <div>

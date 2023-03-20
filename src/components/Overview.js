@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { Label } from "semantic-ui-react";
@@ -113,7 +113,7 @@ const Overview = (props) => {
           ]}
           options={{
             paging: true,
-            pageSize: 20,
+            pageSize: 10,
             headerStyle: {
               backgroundColor: "#ffb162",
               color: "white",

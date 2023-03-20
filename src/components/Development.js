@@ -55,6 +55,7 @@ const Development = (props) => {
             {
               title: "Name",
               field: "name",
+              width: "15%",
             },
             {
               title: "Github url",
@@ -111,7 +112,7 @@ const Development = (props) => {
                 </div>
               </div>
             ),
-            github_url: <a href={tool.github_url}>{tool.github_url}</a>,
+            github_url: <div>{tool.github_url === 'Not available' ? <div>Not available</div> : <a href={tool.github_url}>{tool.github_url}</a>}</div>,
             creation_date: tool.github_created_at,
             last_update: tool.github_updated_at,
             forks: tool.github_forks,
