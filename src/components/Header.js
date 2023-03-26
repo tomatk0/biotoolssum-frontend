@@ -15,19 +15,17 @@ const Header = (props) => {
   return (
     <nav className="container-header">
       <Link to="/"><img src={elixirLogo} alt="Elixir logo" /></Link>
-      {props.amount === 0 ? <div></div> : <div className="text">{props.string} There is a total number of {props.amount} tools available.</div>}
+      {props.string === "Loading tools..." ? <div className="text">{props.string}</div> : <div className="text">{props.string} There is a total number of {props.amount} tools available.</div>}
       <div className="wrapper">
       <Exporting data={props.data}></Exporting>
-        <input type="text" onChange={props.onChangeQuery}></input>
-        <button onClick={props.getDataFromBackend}>Fetch data</button>
         <Menu menuButton={<MenuButton>View <FontAwesomeIcon icon={faBars} /></MenuButton>} transition>
           <MenuItem><Link to="/">Overview</Link></MenuItem>
           <MenuItem><Link to="/basic">Basic</Link></MenuItem>
           <MenuItem><Link to="/scientometry">Scientometry</Link></MenuItem>
           <MenuItem><Link to="/development">Development</Link></MenuItem>
           <MenuItem><Link to="/graphs">Citations graphs</Link></MenuItem>
-          <MenuItem><Link to="/datalifecycle">Data life cycle</Link></MenuItem>
-          <MenuItem><Link to="/matrix">Matrix</Link></MenuItem>
+          {props.amount > 20 ? <MenuItem><Link to="/datalifecycle">Data life cycle</Link></MenuItem> : null}
+          {props.amount > 20 ? <MenuItem><Link to="/matrix">Matrix</Link></MenuItem> : null}
         </Menu>
       </div>
     </nav>

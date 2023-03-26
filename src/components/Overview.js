@@ -1,9 +1,10 @@
-import {React, useState} from "react";
+import {React} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { Label } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "../styles/Table.css";
+import ReadMore from "../common/ReadMore";
 
 import MaterialTable from "material-table";
 import { forwardRef } from 'react';
@@ -60,7 +61,8 @@ const Overview = (props) => {
 
   const listOfTools = props.query ? getToolsFromQuery() : props.tools;
 
-  return (
+  if (props.toolsString !== "Loading tools...") {
+      return (
     
       <div className="display_table">
         <MaterialTable
@@ -74,6 +76,9 @@ const Overview = (props) => {
             {
               title: "Name",
               field: "name",
+              cellStyle: {
+                textAlign: "center",
+              }
             },
             {
               title: "Institutes",
@@ -119,9 +124,6 @@ const Overview = (props) => {
               color: "white",
               textAlign: "center",
             },
-            cellStyle: {
-              textAlign: "center",
-            },
             showTitle: false,
             sorting: false,
             searchFieldAlignment: "left",
@@ -153,16 +155,16 @@ const Overview = (props) => {
               </div>
             ),
             institutes: (
-              <ul className="display_ul">
+              <ul className="display_ul_with_dots">
                 {tool.institutes.map((i) => (
                   <li key={i.name}>{i.name}</li>
                 ))}
               </ul>
             ),
             descriptionSearch: tool.description,
-            description: tool.description,
+            description: <ReadMore text={tool.description} textMaxSize={200}></ReadMore>,
             topics: (
-              <ul className="display_ul">
+              <ul className="display_ul_with_dots">
                 {tool.topics.map((t) => (
                   <li key={t.term}>
                     <a href={`https://bio.tools/t?topic=${t.term}`}>{t.term}</a>
@@ -178,7 +180,7 @@ const Overview = (props) => {
               </ul>
             ),
             functions: (
-              <ul className="display_ul">
+              <ul className="display_ul_with_dots">
                 {tool.functions.map((f) => (
                   <li key={f.term}>
                     <a href={`https://bio.tools/t?topic=${f.term}`}>{f.term}</a>
@@ -194,7 +196,7 @@ const Overview = (props) => {
               </ul>
             ),
             publications: (
-              <ul className="display_ul">
+              <ul className="display_ul_with_dots">
                 {tool.publications.map((p, index) => (
                   <li key={p.doi}>
                     <a href={`https://doi.org/${p.doi}`}>
@@ -217,6 +219,7 @@ const Overview = (props) => {
         />
       </div>
   );
+  }
 };
 
 export default Overview;

@@ -1,6 +1,7 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import config from './common/config';
 
 import Overview from "./components/Overview";
 import Basic from "./components/Basic";
@@ -14,13 +15,9 @@ import DataLifeCycle from "./components/DataLifeCycle";
 function App() {
   const [toolsData, setToolsData] = useState([]);
   const [toolsString, setToolsString] = useState("");
-  const [query, setQuery] = useState("")
-
-  const handleChange = (event) => {
-    setQuery(event.target.value);
-  }
 
   const getDataFromBackend = async () => {
+    setToolsString("Loading tools...")
     const data = await fetch("http://147.251.115.167/data", {
       method: "POST",
       headers: {
@@ -28,25 +25,27 @@ function App() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: query,
+        id: config.getCurrentId(),
       }),
     });
     const result = await data.json();
-    setToolsData(result.data);
     setToolsString(result.resulting_string);
+    setToolsData(result.data);
   };
+
+  useEffect(() => {
+    getDataFromBackend();
+  }, []);
 
   return (
     <>
       <Header
-        getDataFromBackend={getDataFromBackend}
         string={toolsString}
         amount={toolsData.length}
         data={toolsData}
-        onChangeQuery={handleChange}
       ></Header>
       <Routes>
-        <Route path="/" element={<Overview tools={toolsData}></Overview>}></Route>
+        <Route path="/" element={<Overview tools={toolsData} string={toolsString}></Overview>}></Route>
         <Route path="/basic" element={<Basic tools={toolsData}></Basic>}></Route>
         <Route path="/scientometry" element={<Scientometry tools={toolsData}></Scientometry>}></Route>
         <Route path="/development" element={<Development tools={toolsData}></Development>}></Route>

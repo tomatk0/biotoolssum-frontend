@@ -89,10 +89,16 @@ const Basic = (props) => {
             {
               title: "Inputs",
               field: "inputs",
+              cellStyle: {
+                textAlign: "left",
+              }
             },
             {
               title: "Outputs",
               field: "outputs",
+              cellStyle: {
+                textAlign: "left",
+              }
             },
             {
               title: "E. platforms",
@@ -155,14 +161,14 @@ const Basic = (props) => {
               </div>
             ),
             inputs: (
-              <ul className="display_ul">
+              <ul className="display_ul_with_dots">
                 {tool.inputs.map((i) => (
                   <li key={i.term}>{i.term}</li>
                 ))}
               </ul>
             ),
             outputs: (
-              <ul className="display_ul">
+              <ul className="display_ul_with_dots">
                 {tool.outputs.map((o) => (
                   <li key={o.term}>{o.term}</li>
                 ))}
