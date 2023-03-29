@@ -1,5 +1,5 @@
 export default class config {
     static getCurrentId() {
-        return "YUHJNDJ?T8";
+        return "HQY0H;OJ[4";
     }
 }
