@@ -80,7 +80,7 @@ const Development = (props) => {
           ]}
           options={{
             paging: true,
-            pageSize: 20,
+            pageSize: 10,
             headerStyle: {
               backgroundColor: "#ffb162",
               color: "white",

@@ -5,6 +5,8 @@ import { Label } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "../styles/Table.css";
 import ReadMore from "../common/ReadMore";
+import ShowMoreComplexLists from "../common/ShowMoreComplexLists";
+import ShowMoreSimpleLists from "../common/ShowMoreSimpleLists";
 
 import MaterialTable from "material-table";
 import { forwardRef } from 'react';
@@ -155,65 +157,18 @@ const Overview = (props) => {
               </div>
             ),
             institutes: (
-              <ul className="display_ul_with_dots">
-                {tool.institutes.map((i) => (
-                  <li key={i.name}>{i.name}</li>
-                ))}
-              </ul>
+              <ShowMoreSimpleLists list={tool.institutes} listMaxSize={2} attribute="name"></ShowMoreSimpleLists>
             ),
             descriptionSearch: tool.description,
-            description: <ReadMore text={tool.description} textMaxSize={200}></ReadMore>,
+            description: <ReadMore text={tool.description} textMaxSize={175}></ReadMore>,
             topics: (
-              <ul className="display_ul_with_dots">
-                {tool.topics.map((t) => (
-                  <li key={t.term}>
-                    <a href={`https://bio.tools/t?topic=${t.term}`}>{t.term}</a>
-                    <a href={t.uri}>
-                      {" "}
-                      <FontAwesomeIcon
-                        className="font-awesome-button"
-                        icon={faCircleQuestion}
-                      />
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <ShowMoreComplexLists list={tool.topics} listMaxSize={3} link="https://bio.tools/t?topic=" attribute="term"></ShowMoreComplexLists>
             ),
             functions: (
-              <ul className="display_ul_with_dots">
-                {tool.functions.map((f) => (
-                  <li key={f.term}>
-                    <a href={`https://bio.tools/t?topic=${f.term}`}>{f.term}</a>
-                    <a href={f.uri}>
-                      {" "}
-                      <FontAwesomeIcon
-                        className="font-awesome-button"
-                        icon={faCircleQuestion}
-                      />
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <ShowMoreComplexLists list={tool.functions} listMaxSize={3} link="https://bio.tools/t?operation=" attribute="term"></ShowMoreComplexLists>
             ),
             publications: (
-              <ul className="display_ul_with_dots">
-                {tool.publications.map((p, index) => (
-                  <li key={p.doi}>
-                    <a href={`https://doi.org/${p.doi}`}>
-                      Publication {index + 1}{" "}
-                    </a>
-                    {p.citations_source !== "" && (
-                      <a href={p.citations_source}>
-                        <FontAwesomeIcon
-                          className="font-awesome-button"
-                          icon={faCircleQuestion}
-                        />
-                      </a>
-                    )}
-                  </li>
-                ))}
-                <div>Total citations: {tool.citation_count}</div>
-              </ul>
+              <ShowMoreComplexLists list={tool.publications} listMaxSize={3} citation_count={tool.citation_count} attribute="doi"></ShowMoreComplexLists>
             ),
           }))}
         />

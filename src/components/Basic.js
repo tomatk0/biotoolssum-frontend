@@ -2,6 +2,7 @@ import React from "react";
 import { Label } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "../styles/Table.css";
+import ShowMoreSimpleLists from "../common/ShowMoreSimpleLists";
 
 import {
   faWindows,
@@ -124,10 +125,14 @@ const Basic = (props) => {
               title: "Platforms",
               field: "platforms",
             },
+            {
+              title: "Last updated",
+              field: "lastupdated",
+            }
           ]}
           options={{
             paging: true,
-            pageSize: 20,
+            pageSize: 10,
             headerStyle: {
               backgroundColor: "#ffb162",
               color: "white",
@@ -161,18 +166,10 @@ const Basic = (props) => {
               </div>
             ),
             inputs: (
-              <ul className="display_ul_with_dots">
-                {tool.inputs.map((i) => (
-                  <li key={i.term}>{i.term}</li>
-                ))}
-              </ul>
+              <ShowMoreSimpleLists list={tool.inputs} listMaxSize={3} attribute="term"></ShowMoreSimpleLists>
             ),
             outputs: (
-              <ul className="display_ul_with_dots">
-                {tool.outputs.map((o) => (
-                  <li key={o.term}>{o.term}</li>
-                ))}
-              </ul>
+              <ShowMoreSimpleLists list={tool.outputs} listMaxSize={3} attribute="term"></ShowMoreSimpleLists>
             ),
             eplatforms: (
               <ul className="display_ul">
@@ -204,6 +201,7 @@ const Basic = (props) => {
                 ))}
               </ul>
             ),
+            lastupdated: tool.last_updated,
           }))}
         />
       </div>

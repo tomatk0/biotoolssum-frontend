@@ -7,6 +7,9 @@ require("highcharts/modules/exporting")(Highcharts);
 
 const Graphs = (props) => {
   const getYearsList = (minYear, maxYear) => {
+    if (minYear === null || maxYear === null) {
+      return [];
+    }
     const result = [];
     for (let i = minYear; i <= maxYear; i++) {
       result.push(i.toString());
