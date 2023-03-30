@@ -1,5 +1,5 @@
 export default class config {
     static getCurrentId() {
-        return ">SVGRV=TDL";
+        return "1E:0OU<UZ>";
     }
 }
