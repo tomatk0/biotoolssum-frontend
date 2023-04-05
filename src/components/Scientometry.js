@@ -117,7 +117,7 @@ const Scientometry = (props) => {
             hidden: true,
           },
           {
-            title: "Name",
+            title: "Name (searchable)",
             field: "name",
             cellStyle: {
               width: "24%",

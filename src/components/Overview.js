@@ -99,7 +99,7 @@ const Overview = (props) => {
               hidden: true,
             },
             {
-              title: "Name",
+              title: "Name (searchable)",
               field: "name",
               cellStyle: {
                 textAlign: "center",
@@ -120,7 +120,7 @@ const Overview = (props) => {
               hidden: true,
             },
             {
-              title: "Description",
+              title: "Description (searchable)",
               field: "description",
               cellStyle: {
                 width: "21%",

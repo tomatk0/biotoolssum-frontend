@@ -103,7 +103,7 @@ const Basic = (props) => {
             hidden: true,
           },
           {
-            title: "Name",
+            title: "Name (searchable)",
             field: "name",
             cellStyle: {
               width: "15%",
