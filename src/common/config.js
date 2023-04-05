@@ -1,5 +1,23 @@
 export default class config {
     static getCurrentId() {
-        return "HQY0H;OJ[4";
+        return "<WOTCRJYDE";
+    }
+    static showBasic() {
+        return true;
+    }
+    static showScientometry() {
+        return true;
+    }
+    static showDevelopment() {
+        return true;
+    }
+    static showGraphs() {
+        return true;
+    }
+    static showLifeCycle() {
+        return true;
+    }
+    static showMatrix() {
+        return true;
     }
 }

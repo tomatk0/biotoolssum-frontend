@@ -1,7 +1,12 @@
 import React from "react";
 import "../styles/Table.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleQuestion,
+  faNewspaper,
+  faPen,
+} from "@fortawesome/free-solid-svg-icons";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import MaterialTable from "material-table";
 import { forwardRef } from "react";
@@ -46,22 +51,59 @@ const tableIcons = {
 };
 
 const Scientometry = (props) => {
-  const resolveDocumentation = (documentation) => {
-    if (documentation !== "") {
-      return (
-        <div>
-          {"Yes "}
-          <a className="display_a" href={documentation}>
-            {" "}
-            <FontAwesomeIcon
-              className="font-awesome-button"
-              icon={faCircleQuestion}
-            />
-          </a>
-        </div>
-      );
-    }
-    return <div>No</div>;
+  const createData = () => {
+    let data = [];
+    props.tools.forEach((tool) => {
+      tool.publications.forEach((pub) => {
+        data.push({
+          nameSearch: tool.name,
+          name: (
+            <div>
+              <div>
+                <Tooltip
+                  title={`Data was last updated on ${tool.last_updated}. Tool's availability is ${tool.availability}% for the past 8 days since the last update.`}
+                  placement="top"
+                >
+                  <a href={tool.homepage}>{tool.name}</a>
+                </Tooltip>{" "}
+                {tool.version !== "" && tool.version}{" "}
+                <Tooltip title={`Bio.tools: ${tool.name}`} placement="top">
+                  <a href={tool.bio_link}>
+                    <FontAwesomeIcon
+                      className="font-awesome-button"
+                      icon={faCircleQuestion}
+                    />
+                  </a>
+                </Tooltip>
+              </div>
+            </div>
+          ),
+          publication: (
+            <div>
+              <Tooltip title={pub.title} placement="top">
+                <a href={`https://doi.org/${pub.doi}`}>{pub.doi}</a>
+              </Tooltip>{" "}
+              <Tooltip title="Citations source" placement="top">
+                {pub.citations_source !== "" ? (
+                  <a href={pub.citations_source}>
+                    <FontAwesomeIcon
+                      className="font-awesome-button"
+                      icon={faCircleQuestion}
+                    />
+                  </a>
+                ) : (
+                  <div></div>
+                )}
+              </Tooltip>
+            </div>
+          ),
+          citations: pub.citations_count,
+          impact_factor: pub.impact,
+          journal: pub.journal,
+        });
+      });
+    });
+    return data;
   };
 
   return (
@@ -77,26 +119,53 @@ const Scientometry = (props) => {
           {
             title: "Name",
             field: "name",
+            cellStyle: {
+              width: "24%",
+              textAlign: "center",
+            },
+            sorting: false,
+          },
+          {
+            title: (
+              <div>
+                Publication <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
+              </div>
+            ),
+            field: "publication",
+            cellStyle: {
+              width: "24%",
+              textAlign: "center",
+            },
+            sorting: false,
           },
           {
             title: "Citations",
             field: "citations",
+            cellStyle: {
+              width: "14%",
+              textAlign: "center",
+            },
+          },
+          {
+            title: (
+              <div>
+                Journal <FontAwesomeIcon icon={faNewspaper}></FontAwesomeIcon>
+              </div>
+            ),
+            field: "journal",
+            cellStyle: {
+              width: "24%",
+              textAlign: "center",
+            },
+            sorting: false,
           },
           {
             title: "Impact factor",
             field: "impact_factor",
-          },
-          {
-            title: "Journals",
-            field: "journals",
-          },
-          {
-            title: "Availability",
-            field: "availability",
-          },
-          {
-            title: "Documentation",
-            field: "documentation",
+            cellStyle: {
+              width: "14%",
+              textAlign: "center",
+            },
           },
         ]}
         options={{
@@ -107,58 +176,12 @@ const Scientometry = (props) => {
             color: "white",
             textAlign: "center",
           },
-          cellStyle: {
-            textAlign: "center",
-          },
           showTitle: false,
-          sorting: false,
           searchFieldAlignment: "left",
           toolbarButtonAlignment: "left",
         }}
         icons={tableIcons}
-        data={props.tools.map((tool) => ({
-          nameSearch: tool.name,
-          name: (
-            <div>
-              <div>
-                <a href={tool.homepage}>{tool.name}</a>{" "}
-                {tool.version !== "" && tool.version}
-                <a href={tool.bio_link}>
-                  {" "}
-                  <FontAwesomeIcon
-                    className="font-awesome-button"
-                    icon={faCircleQuestion}
-                  />
-                </a>
-              </div>
-            </div>
-          ),
-          citations: tool.citation_count,
-          impact_factor: tool.impact_factor,
-          journals: tool.journals,
-          availability: (
-            <div>
-              {tool.availability === "Not available" ? (
-                <div>Not available</div>
-              ) : (
-                <div>
-                  {tool.availability}
-                  {"% "}
-                  <a
-                    href={`https://openebench.bsc.es/html/tool/${tool.bio_id}`}
-                  >
-                    {" "}
-                    <FontAwesomeIcon
-                      className="font-awesome-button"
-                      icon={faCircleQuestion}
-                    />
-                  </a>
-                </div>
-              )}
-            </div>
-          ),
-          documentation: resolveDocumentation(tool.documentation),
-        }))}
+        data={createData()}
       />
     </div>
   );

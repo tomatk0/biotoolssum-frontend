@@ -41,7 +41,7 @@ const Graphs = (props) => {
         const yearsFromSeries = getYearsForSeries(citations, years);
         if (yearsFromSeries.reduce((a, b) => a + b, 0) > 0) {
           result.push({
-            name: publication.pmid,
+            name: publication.title,
             data: yearsFromSeries,
           });
         }

@@ -1,6 +1,8 @@
 import React from "react";
 import * as FileSaver from "file-saver";
 import XLSX from "sheetjs-style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileExport } from "@fortawesome/free-solid-svg-icons";
 
 const Exporting = (props) => {
   const fileType =
@@ -25,7 +27,8 @@ const Exporting = (props) => {
       newTool["description"] = tool.description;
       newTool["publications"] = "";
       tool.publications.forEach((pub) => {
-        newTool["publications"] = newTool["publications"].concat(pub.details + ", ")
+        const details = pub.title + ", " + pub.authors + ", " + pub.journal + ", " + pub.publication_date;
+        newTool["publications"] = newTool["publications"].concat(details + ", ")
       })
       newTool["publications"] = newTool["publications"].slice(0, -2);
       newTool["citations"] = tool.citation_count;
@@ -63,7 +66,7 @@ const Exporting = (props) => {
 
   return (
     <>
-      <button onClick={exportToExcel}>Export xlsx</button>
+      <button onClick={exportToExcel}>Export xlsx <FontAwesomeIcon icon={faFileExport}></FontAwesomeIcon></button>
     </>
   );
 };

@@ -2,7 +2,7 @@
     padding: 1rem;
     display: flex;
     flex-direction: row;
-    background-color: #df770f;
+    background-color: #ef7500;
     align-items: center;
     justify-content: space-between;
     font-size: 1rem;
@@ -16,7 +16,7 @@
     color: white;
     border: none;
     cursor: pointer;
-    background-color: #df770f;
+    background-color: #ef7500;
 }
 
 .container-header img {
@@ -28,6 +28,14 @@
 .text {
     color: white;
     justify-self: center;
+}
+
+.black-text{
+    color: black;
+}
+
+.szh-menu__item:hover{
+    background-color: #ef7500;
 }
 
 @media only screen and (max-width: 700px) {

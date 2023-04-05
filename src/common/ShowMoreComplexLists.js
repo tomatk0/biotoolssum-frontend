@@ -1,7 +1,13 @@
 import { React, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleQuestion,
+  faWrench,
+  faPen,
+} from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Table.css";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const ShowMoreComplexLists = (props) => {
   const [expanded, setExpanded] = useState(false);
@@ -17,53 +23,41 @@ const ShowMoreComplexLists = (props) => {
 
   return (
     <div>
-      <ul className="display_ul_with_dots">
-        <div>
-          {props.attribute === "term" && (
-            <div>
-              {showList.map((item) => (
-                <li key={item.term}>
-                  <a href={`${props.link}${item.term}`}>{item.term}</a>
-                  <a href={item.uri}>
-                    {" "}
-                    <FontAwesomeIcon
-                      className="font-awesome-button"
-                      icon={faCircleQuestion}
-                    />
-                  </a>
-                </li>
-              ))}
-            </div>
-          )}
-          {props.attribute === "doi" && (
-            <div>
-              {showList.map((p, index) => (
-                <li key={p.doi}>
-                  <a href={`https://doi.org/${p.doi}`}>
-                    Publication {index + 1}{" "}
-                  </a>
-                  {p.citations_source !== "" && (
-                    <a href={p.citations_source}>
-                      <FontAwesomeIcon
-                        className="font-awesome-button"
-                        icon={faCircleQuestion}
-                      />
-                    </a>
-                  )}
-                </li>
-              ))}
-            </div>
-          )}
-        </div>
-      </ul>
+      <div>
+        <ul class="fa-ul">
+          {showList.map((item) => (
+            <li key={item.term}>
+              <span class="fa-li">
+                <FontAwesomeIcon icon={faWrench}></FontAwesomeIcon>
+              </span>
+              <a href={`${props.link}${item.term}`}>{item.term}</a>{" "}
+              <Tooltip title={`EDAM: ${item.term}`} placement="top">
+                <a href={item.uri}>
+                  <FontAwesomeIcon
+                    className="font-awesome-button"
+                    icon={faCircleQuestion}
+                  />
+                </a>
+              </Tooltip>
+            </li>
+          ))}
+        </ul>
+      </div>
       {props.list.length > props.listMaxSize && (
         <span>
-          <a href="#" onClick={toggleLines}>
-            {expanded ? "Show less" : "Show more"}
-          </a>
+          <button className="show-more-button" onClick={toggleLines}>
+            {expanded ? (
+              <div>
+                <FontAwesomeIcon icon={faEyeSlash}></FontAwesomeIcon> Show less
+              </div>
+            ) : (
+              <div>
+                <FontAwesomeIcon icon={faEye}></FontAwesomeIcon> Show more
+              </div>
+            )}
+          </button>
         </span>
       )}
-      <div>{props.attribute === "doi" ? <div>Total citations: {props.citation_count}</div> : <div></div>}</div>
     </div>
   );
 };
