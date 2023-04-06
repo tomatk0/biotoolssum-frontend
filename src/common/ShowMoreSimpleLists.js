@@ -18,10 +18,10 @@ const ShowMoreSimpleLists = (props) => {
   return (
     <div>
       {props.attribute === "name" && (
-        <ul class="fa-ul">
+        <ul className="fa-ul">
           {showList.map((item) => (
             <li key={item.name}>
-              <span class="fa-li">
+              <span className="fa-li">
                 <FontAwesomeIcon icon={faBuildingColumns}></FontAwesomeIcon>
               </span>
               {item.name}
@@ -30,10 +30,10 @@ const ShowMoreSimpleLists = (props) => {
         </ul>
       )}
       {props.attribute === "term" && (
-        <ul class="fa-ul">
+        <ul className="fa-ul">
           {showList.map((item) => (
             <li key={item.term}>
-              <span class="fa-li">
+              <span className="fa-li">
                 <FontAwesomeIcon icon={faGear}></FontAwesomeIcon>
               </span>
               {item.term}

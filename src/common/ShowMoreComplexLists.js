@@ -24,10 +24,10 @@ const ShowMoreComplexLists = (props) => {
   return (
     <div>
       <div>
-        <ul class="fa-ul">
+        <ul className="fa-ul">
           {showList.map((item) => (
             <li key={item.term}>
-              <span class="fa-li">
+              <span className="fa-li">
                 <FontAwesomeIcon icon={faWrench}></FontAwesomeIcon>
               </span>
               <a href={`${props.link}${item.term}`}>{item.term}</a>{" "}
