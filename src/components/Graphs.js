@@ -1,137 +1,120 @@
 import React from "react";
 import HighchartsReact from "highcharts-react-official";
-import '../styles/Graphs.css'
+import "../styles/Graphs.css";
+
+import MaterialTable from "material-table";
+import { forwardRef } from "react";
+import AddBox from "@material-ui/icons/AddBox";
+import ArrowDownward from "@material-ui/icons/ArrowDownward";
+import Check from "@material-ui/icons/Check";
+import ChevronLeft from "@material-ui/icons/ChevronLeft";
+import ChevronRight from "@material-ui/icons/ChevronRight";
+import Clear from "@material-ui/icons/Clear";
+import DeleteOutline from "@material-ui/icons/DeleteOutline";
+import Edit from "@material-ui/icons/Edit";
+import FilterList from "@material-ui/icons/FilterList";
+import FirstPage from "@material-ui/icons/FirstPage";
+import LastPage from "@material-ui/icons/LastPage";
+import Remove from "@material-ui/icons/Remove";
+import SaveAlt from "@material-ui/icons/SaveAlt";
+import Search from "@material-ui/icons/Search";
+import ViewColumn from "@material-ui/icons/ViewColumn";
+
+const tableIcons = {
+  Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
+  Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
+  Clear: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+  Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
+  DetailPanel: forwardRef((props, ref) => (
+    <ChevronRight {...props} ref={ref} />
+  )),
+  Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
+  Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref} />),
+  Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref} />),
+  FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
+  LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
+  NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+  PreviousPage: forwardRef((props, ref) => (
+    <ChevronLeft {...props} ref={ref} />
+  )),
+  ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+  Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
+  SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
+  ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
+  ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
+};
 
 var Highcharts = require("highcharts");
 require("highcharts/modules/exporting")(Highcharts);
 
 const Graphs = (props) => {
-  const getYearsList = (minYear, maxYear) => {
-    if (minYear === null || maxYear === null) {
-      return [];
-    }
-    const result = [];
-    for (let i = minYear; i <= maxYear; i++) {
-      result.push(i.toString());
-    }
-    return result;
-  };
-
-  const getYearsForSeries = (citationsList, years) => {
-    const result = [];
-    for (let i = 0; i < years.length; i++) {
-      const year = years[i];
-      let res = citationsList.filter((citation) => citation.year === year)[0];
-      if (res) {
-        result.push(parseInt(res.count));
-      } else {
-        result.push(0);
-      }
-    }
-    return result;
-  };
-
-  const getSeries = (tool) => {
-    const result = [];
-    const years = getYearsList(tool.min_year, tool.max_year);
-    for (let i = 0; i < tool.publications.length; i++) {
-      const publication = tool.publications[i];
-      const citations = publication.citations_list;
-      if (citations.length !== 0) {
-        const yearsFromSeries = getYearsForSeries(citations, years);
-        if (yearsFromSeries.reduce((a, b) => a + b, 0) > 0) {
-          result.push({
-            name: publication.title,
-            data: yearsFromSeries,
-          });
-        }
-      }
-    }
-    if (result.length > 1) {
-      const totalCitations = [...result[0].data];
-      for (let i = 1; i < result.length; i++) {
-        const series = result[i].data;
-        for (let j = 0; j < series.length; j++) {
-          totalCitations[j] += series[j];
-        }
-      }
-      result.push({
-        name: "Total citations",
-        data: totalCitations,
-      })
-    }
-
-    return result;
-  };
-
-  const getNewOptions = (tool) => {
-    return {
-      title: {
-        text: `Citations for ${tool.name}`,
-      },
-
-      exporting: {
-        filename: `chart_${tool.name}`,
-        buttons: {
-          contextButton: {
-            text: "Generate",
-            symbolY: 15,
-          },
-        },
-        chartOptions: {
-          plotOptions: {
-            series: {
-              dataLabels: {
-                enabled: true,
-              },
-            },
-          },
-        },
-      },
-
-      chart: {
-        type: "column",
-      },
-
-      tooltip: {
-        shared: true,
-      },
-
-      xAxis: {
-        categories: getYearsList(tool.min_year, tool.max_year),
-      },
-
-      yAxis: {
-        title: {
-          text: "Citations",
-        },
-        allowDecimals: false,
-      },
-
-      plotOptions: {
-        series: {
-          pointWidth: 20,
-        }
-      },
-
-      series: getSeries(tool),
+  const addFormatter = (options) => {
+    options.tooltip.formatter = function () {
+      return "The value for <b>" + this.x + "</b> is <b>" + this.y + "</b>";
     };
+    return options;
+  };
+
+  const getGraphs = () => {
+    const result = [];
+    props.tools.forEach((tool) => {
+      if (tool.options_for_graph !== null) {
+        const newGraph = {};
+        newGraph.name = tool.name;
+        newGraph.chart = (
+          <HighchartsReact
+            highcharts={Highcharts}
+            options={addFormatter(tool.options_for_graph)}
+          ></HighchartsReact>
+        );
+        result.push(newGraph);
+      }
+    });
+    return result;
   };
 
   return (
-    <div className="graph-container">
-      {props.tools.map(
-        (tool) =>
-        <div>
-        {getSeries(tool).length !== 0 && (
-          <HighchartsReact
-            highcharts={Highcharts}
-            options={getNewOptions(tool)}
-          ></HighchartsReact>
-        )}
-      </div>
-      )}
+    <div className="graph_table">
+      <MaterialTable
+        columns={[
+          {
+            title: "nameSearch",
+            field: "nameSearch",
+            searchable: true,
+            hidden: true,
+          },
+          {
+            field: "chart",
+          },
+        ]}
+        options={{
+          paging: true,
+          pageSize: 10,
+          showTitle: false,
+          sorting: false,
+          searchFieldAlignment: "left",
+          toolbarButtonAlignment: "left",
+        }}
+        icons={tableIcons}
+        data={getGraphs().map((tool) => ({
+          nameSearch: tool.name,
+          chart: tool.chart,
+        }))}
+      ></MaterialTable>
     </div>
+    // <div className="graph-container">
+    //   {props.tools.map(
+    //     (tool) =>
+    //   <div>
+    //   {tool.options_for_graph !== null && (
+    //     <HighchartsReact
+    //       highcharts={Highcharts}
+    //       options={addFormatter(tool.options_for_graph)}
+    //     ></HighchartsReact>
+    //   )}
+    // </div>
+    //   )}
+    // </div>
   );
 };
 

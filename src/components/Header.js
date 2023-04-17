@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import 'react-dropdown/style.css';
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTable, faArrowsSpin, faChartSimple, faFlask, faHouse, faGear } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faChartSimple, faFlask, faHouse, faGear } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
@@ -21,13 +21,11 @@ const Header = (props) => {
       <div className="wrapper">
       <Exporting data={props.data}></Exporting>
         <Menu menuButton={<MenuButton>View <FontAwesomeIcon icon={faBars} /></MenuButton>} transition>
-          <MenuItem><Link style={{color: 'black'}} to="/">Overview <FontAwesomeIcon icon={faHouse}></FontAwesomeIcon></Link></MenuItem>
-          {config.showBasic() ? <MenuItem><Link style={{color: 'black'}} to="/basic">Basic <FontAwesomeIcon icon={faGear}></FontAwesomeIcon></Link></MenuItem> : null}
-          {config.showScientometry() ? <MenuItem><Link style={{color: 'black'}} to="/scientometry">Scientometry <FontAwesomeIcon icon={faFlask}></FontAwesomeIcon></Link></MenuItem> : null}
-          {config.showDevelopment() ? <MenuItem><Link style={{color: 'black'}} to="/development">Development <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon></Link></MenuItem> : null}
-          {config.showGraphs() ? <MenuItem><Link style={{color: 'black'}} to="/graphs">Citations graphs <FontAwesomeIcon icon={faChartSimple}></FontAwesomeIcon></Link></MenuItem> : null}
-          {config.showLifeCycle() ? <MenuItem><Link style={{color: 'black'}} to="/datalifecycle">Data life cycle <FontAwesomeIcon icon={faArrowsSpin}></FontAwesomeIcon></Link></MenuItem> : null}
-          {config.showMatrix() ? <MenuItem><Link style={{color: 'black'}} to="/matrix">Matrix <FontAwesomeIcon icon={faTable}></FontAwesomeIcon></Link></MenuItem> : null}
+          <MenuItem><Link style={{color: 'black'}} to={`${props.query}`}>Overview <FontAwesomeIcon icon={faHouse}></FontAwesomeIcon></Link></MenuItem>
+          {config.showBasic() ? <MenuItem><Link style={{color: 'black'}} to={`${props.query}/basic`}>Basic <FontAwesomeIcon icon={faGear}></FontAwesomeIcon></Link></MenuItem> : null}
+          {config.showScientometry() ? <MenuItem><Link style={{color: 'black'}} to={`${props.query}/scientometry`}>Scientometry <FontAwesomeIcon icon={faFlask}></FontAwesomeIcon></Link></MenuItem> : null}
+          {config.showDevelopment() ? <MenuItem><Link style={{color: 'black'}} to={`${props.query}/development`}>Development <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon></Link></MenuItem> : null}
+          {config.showGraphs() ? <MenuItem><Link style={{color: 'black'}} to={`${props.query}/graphs`}>Citations graphs <FontAwesomeIcon icon={faChartSimple}></FontAwesomeIcon></Link></MenuItem> : null}
         </Menu>
       </div>
     </nav>

@@ -7,6 +7,7 @@ import {
   faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "@material-ui/core/Tooltip";
+import { Helmet } from "react-helmet";
 
 import MaterialTable from "material-table";
 import { forwardRef } from "react";
@@ -79,11 +80,11 @@ const Scientometry = (props) => {
             </div>
           ),
           publication: (
-            <div>
+            <div className="flexed-items">
               <Tooltip title={pub.title} placement="top">
                 <a href={`https://doi.org/${pub.doi}`}>{pub.doi}</a>
               </Tooltip>{" "}
-              <Tooltip title="Citations source" placement="top">
+              {/* <Tooltip title="Citations source" placement="top">
                 {pub.citations_source !== "" ? (
                   <a href={pub.citations_source}>
                     <FontAwesomeIcon
@@ -94,7 +95,21 @@ const Scientometry = (props) => {
                 ) : (
                   <div></div>
                 )}
-              </Tooltip>
+              </Tooltip> */}
+              <div>
+                <Helmet>
+                  <script
+                    type="text/javascript"
+                    src="https://badge.dimensions.ai/badge.js"
+                    async={true}
+                  ></script>
+                </Helmet>
+                <span
+                  className="__dimensions_badge_embed__"
+                  data-doi={pub.doi}
+                  data-style="small_circle"
+                ></span>
+              </div>
             </div>
           ),
           citations: pub.citations_count,

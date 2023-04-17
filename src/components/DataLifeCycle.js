@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const DataLifeCycle = (props) => {
     return (
         <svg version="1.1" className="svg-image" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 250.9 251" height="24em">
-        <Link to="/datalifecycle/planning">
+        <Link to="/planning">
         <g>
             <path className="st5" d="M144.4,31.6l-16.6,32.3c17.5,0.7,33.2,8.6,44,20.9l35.7-7l14.6-32.4C199.6,18.3,166,0.8,128.2,0L144.4,31.6z"></path>
             <path className="st1" d="M166.7,24.1c0.3-0.4,0.8-0.6,1.4-0.6c4.7,0,9.4,0,14.1,0c0.5,0,1,0.2,1.4,0.6c0.3,0.3,0.4,0.7,0.4,1.2
@@ -20,7 +20,7 @@ const DataLifeCycle = (props) => {
             <path className="st1" d="M175.8,38.6l0.1,0.1c0.7,0.7,1.3,1.3,2,2c-1,0.3-1.9,0.5-2.9,0.8C175.3,40.6,175.6,39.6,175.8,38.6z"></path>
         </g>
         </Link>
-        <Link to="/datalifecycle/collecting">
+        <Link to="/collecting">
         <g>
             <path className="st6" d="M213.9,159.8l34.4-8.7c1.7-8.3,2.6-16.8,2.6-25.6c0-28.5-9.5-54.7-25.4-75.8L210.8,82l-35.6,7
             c7.5,10.2,11.9,22.8,11.9,36.4c0,3.7-0.3,7.3-1,10.8L213.9,159.8z"></path>
@@ -34,7 +34,7 @@ const DataLifeCycle = (props) => {
             C212.3,109.4,213.1,108.1,213.8,106.8z"></path>
         </g>
         </Link>
-        <Link to="/datalifecycle/processing">
+        <Link to="/processing">
         <g>
             <path className="st4" d="M211.7,165L184,141.6c-4.4,16.4-15.5,30.1-30.1,38.1l-1.1,36.3l28.3,21.5c31.9-16.2,56-45.6,65-81.1L211.7,165
             z"></path>
@@ -59,7 +59,7 @@ const DataLifeCycle = (props) => {
             c0.3-0.9,0.6-1.9,0.9-2.8c0.1-0.2,0.1-0.3,0.2-0.5C186.5,189,186.7,189,186.8,189z"></path>
         </g>
         </Link>
-        <Link to="/datalifecycle/analysing">
+        <Link to="/analysing">
         <g>
             <path className="st3" d="M149,218.3l1-36.2c-7.5,3.3-15.8,5.1-24.5,5.1c-8.5,0-16.6-1.7-24-4.9l-29.1,21.8l0.9,35.5
             c15.9,7.3,33.6,11.4,52.2,11.4c18.4,0,36-4,51.7-11.1L149,218.3z"></path>
@@ -74,7 +74,7 @@ const DataLifeCycle = (props) => {
             c0-0.2,0-0.4,0.1-0.6C105.6,209,105.9,208.7,106.3,208.7z"></path>
         </g>
         </Link>
-        <Link to="/datalifecycle/preserving">
+        <Link to="/preserving">
         <g>
             <path className="st2" d="M67.6,201.7l29-21.8c-14.7-7.8-25.8-21.4-30.4-37.8L31,133L3.8,155.8c8.8,35.5,32.8,65.1,64.7,81.4L67.6,201.7
             z"></path>
@@ -92,7 +92,7 @@ const DataLifeCycle = (props) => {
             c-0.3-0.2-0.5-0.5-0.7-0.8c-0.1-0.3-0.1-0.6-0.1-0.8C38.9,167.4,38.9,166.1,38.9,164.8z"></path>
         </g>
         </Link>
-        <Link to="/datalifecycle/sharing">
+        <Link to="/sharing">
         <g>
             <path className="st7" d="M29.8,127.8l35.1,9c-0.7-3.7-1.1-7.5-1.1-11.4c0-13.4,4.3-25.9,11.6-36L60.6,56.3l-34.8-7
             C9.6,70.4,0,96.8,0,125.5c0,8.6,0.9,17,2.5,25.1L29.8,127.8z"></path>
@@ -107,7 +107,7 @@ const DataLifeCycle = (props) => {
             C41.4,75.5,42,75.2,42.7,75z"></path>
         </g>
         </Link>
-        <Link to="/datalifecycle/reusing">
+        <Link to="/reusing">
         <g>
             <path className="st0" d="M63.9,52.1l14.9,33.1c10.7-12.4,26.2-20.5,43.6-21.3l16.7-32.3L122.9,0C85.3,0.8,51.7,18.1,29.2,45L63.9,52.1z
             "></path>

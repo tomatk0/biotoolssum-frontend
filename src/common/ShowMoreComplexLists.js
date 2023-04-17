@@ -3,9 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleQuestion,
   faWrench,
-  faPen,
 } from "@fortawesome/free-solid-svg-icons";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faBook } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Table.css";
 import Tooltip from "@material-ui/core/Tooltip";
 
@@ -24,24 +23,38 @@ const ShowMoreComplexLists = (props) => {
   return (
     <div>
       <div>
-        <ul className="fa-ul">
-          {showList.map((item) => (
-            <li key={item.term}>
-              <span className="fa-li">
-                <FontAwesomeIcon icon={faWrench}></FontAwesomeIcon>
-              </span>
-              <a href={`${props.link}${item.term}`}>{item.term}</a>{" "}
-              <Tooltip title={`EDAM: ${item.term}`} placement="top">
-                <a href={item.uri}>
-                  <FontAwesomeIcon
-                    className="font-awesome-button"
-                    icon={faCircleQuestion}
-                  />
-                </a>
-              </Tooltip>
-            </li>
-          ))}
-        </ul>
+        {props.attribute === "term" && (
+          <ul className="fa-ul">
+            {showList.map((item) => (
+              <li key={item.term}>
+                <span className="fa-li">
+                  <FontAwesomeIcon icon={faWrench}></FontAwesomeIcon>
+                </span>
+                <a href={`${props.link}${item.term}`}>{item.term}</a>{" "}
+                <Tooltip title={`EDAM: ${item.term}`} placement="top">
+                  <a href={item.uri}>
+                    <FontAwesomeIcon
+                      className="font-awesome-button"
+                      icon={faCircleQuestion}
+                    />
+                  </a>
+                </Tooltip>
+              </li>
+            ))}
+          </ul>
+        )}
+        {props.attribute === "url" && (
+          <ul className="fa-ul">
+            {showList.map((item) => (
+              <li key={item.url}>
+                <span className="fa-li">
+                  <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+                </span>
+                <a href={item.url}>{item.type}</a>{" "}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
       {props.list.length > props.listMaxSize && (
         <span>

@@ -1,6 +1,10 @@
 export default class config {
     static getCurrentId() {
-        return "<WOTCRJYDE";
+        return "?98?C9ZWG2";
+    }
+    static appType() {
+        // table, matrix or cycle
+        return "matrix";
     }
     static showBasic() {
         return true;
@@ -12,12 +16,6 @@ export default class config {
         return true;
     }
     static showGraphs() {
-        return true;
-    }
-    static showLifeCycle() {
-        return true;
-    }
-    static showMatrix() {
         return true;
     }
 }

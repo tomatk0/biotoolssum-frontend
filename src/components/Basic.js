@@ -13,7 +13,6 @@ import {
   faCircleQuestion,
   faRightToBracket,
   faRightFromBracket,
-  faFileInvoice,
 } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "@material-ui/core/Tooltip";
 

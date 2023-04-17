@@ -1,6 +1,6 @@
 import { React } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleQuestion, faBook } from "@fortawesome/free-solid-svg-icons";
+import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { Label } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "../styles/Table.css";
@@ -53,30 +53,11 @@ const tableIcons = {
 
 const Overview = (props) => {
 
-  const resolveDocumentation = (documentation) => {
-    if (documentation !== "") {
-      return (
-        <div>
-          {"Yes "}
-          <a className="display_a" href={documentation}>
-            {" "}
-            <FontAwesomeIcon
-              className="font-awesome-button"
-              icon={faCircleQuestion}
-            />
-          </a>
-        </div>
-      );
-    }
-    return <div>No</div>;
-  };
-
   const getToolsFromQuery = () => {
     let tools = [];
 
     props.tools.forEach((tool) => {
       tool.matrix_queries.forEach((matrixQuery) => {
-        console.log(matrixQuery.matrix_query);
         if (matrixQuery.matrix_query === props.query) {
           tools.push(tool);
         }
@@ -85,7 +66,7 @@ const Overview = (props) => {
     return tools;
   };
 
-  const listOfTools = props.query ? getToolsFromQuery() : props.tools;
+  const listOfTools = props.tools;
 
   if (props.toolsString !== "Loading tools...") {
     return (
@@ -141,12 +122,11 @@ const Overview = (props) => {
               },
             },
             {
-              title: "Documentation",
-              field: "documentation",
+              title: "Documentations",
+              field: "documentations",
               sorting: false,
               cellStyle: {
                 width: "11%",
-                textAlign: "center",
               },
             },
           ]}
@@ -170,13 +150,12 @@ const Overview = (props) => {
               <div>
                 <div>
                   <Tooltip
-                    title={`Data was last updated on ${tool.last_updated}. Tool's availability is ${tool.availability}% for the past 8 days since the last update.` }
+                    title={`Data was last updated on ${tool.last_updated}. Tool's availability is ${tool.availability}% for the past 8 days since the last update.`}
                     placement="top"
                   >
                     <a href={tool.homepage}>{tool.name}</a>
                   </Tooltip>{" "}
-                  {tool.version !== "" && tool.version}
-                  {" "}
+                  {tool.version !== "" && tool.version}{" "}
                   <Tooltip title={`Bio.tools: ${tool.name}`} placement="top">
                     <a href={tool.bio_link}>
                       <FontAwesomeIcon
@@ -222,7 +201,13 @@ const Overview = (props) => {
                 attribute="term"
               ></ShowMoreComplexLists>
             ),
-            documentation: resolveDocumentation(tool.documentation),
+            documentations: (
+              <ShowMoreComplexLists
+                list={tool.documentations}
+                listMaxSize={3}
+                attribute="url"
+              ></ShowMoreComplexLists>
+            ),
           }))}
         />
       </div>
