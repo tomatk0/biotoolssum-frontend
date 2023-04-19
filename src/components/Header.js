@@ -21,11 +21,11 @@ const Header = (props) => {
       <div className="wrapper">
       <Exporting data={props.data}></Exporting>
         <Menu menuButton={<MenuButton>View <FontAwesomeIcon icon={faBars} /></MenuButton>} transition>
-          <MenuItem><Link style={{color: 'black'}} to={`${props.query}`}>Overview <FontAwesomeIcon icon={faHouse}></FontAwesomeIcon></Link></MenuItem>
-          {config.showBasic() ? <MenuItem><Link style={{color: 'black'}} to={`${props.query}/basic`}>Basic <FontAwesomeIcon icon={faGear}></FontAwesomeIcon></Link></MenuItem> : null}
-          {config.showScientometry() ? <MenuItem><Link style={{color: 'black'}} to={`${props.query}/scientometry`}>Scientometry <FontAwesomeIcon icon={faFlask}></FontAwesomeIcon></Link></MenuItem> : null}
-          {config.showDevelopment() ? <MenuItem><Link style={{color: 'black'}} to={`${props.query}/development`}>Development <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon></Link></MenuItem> : null}
-          {config.showGraphs() ? <MenuItem><Link style={{color: 'black'}} to={`${props.query}/graphs`}>Citations graphs <FontAwesomeIcon icon={faChartSimple}></FontAwesomeIcon></Link></MenuItem> : null}
+          <MenuItem><Link style={{color: 'black'}} to={props.query !== "" ? `${props.query}` : "/"}>Overview <FontAwesomeIcon icon={faHouse}></FontAwesomeIcon></Link></MenuItem>
+          {config.showBasic() ? <MenuItem><Link style={{color: 'black'}} to={props.query !== "" ? `${props.query}/basic` : "/basic"}>Basic <FontAwesomeIcon icon={faGear}></FontAwesomeIcon></Link></MenuItem> : null}
+          {config.showScientometry() ? <MenuItem><Link style={{color: 'black'}} to={props.query !== "" ? `${props.query}/scientometry` : "/scientometry"}>Scientometry <FontAwesomeIcon icon={faFlask}></FontAwesomeIcon></Link></MenuItem> : null}
+          {config.showDevelopment() ? <MenuItem><Link style={{color: 'black'}} to={props.query !== "" ? `${props.query}/development` : "/development"}>Development <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon></Link></MenuItem> : null}
+          {config.showGraphs() ? <MenuItem><Link style={{color: 'black'}} to={props.query !== "" ? `${props.query}/graphs` : "/graphs"}>Citations graphs <FontAwesomeIcon icon={faChartSimple}></FontAwesomeIcon></Link></MenuItem> : null}
         </Menu>
       </div>
     </nav>
