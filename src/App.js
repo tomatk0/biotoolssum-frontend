@@ -51,7 +51,7 @@ function App() {
         }
       {config.appType() === "cycle" &&
       <>
-        <AppTypeCycle toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools}></AppTypeCycle>
+        <AppTypeCycle toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} query=""></AppTypeCycle>
       </>
         }
     </>

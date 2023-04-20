@@ -20,20 +20,6 @@ import protein3d from "../images/protein-3d-services.png";
 import proteinxd from "../images/protein-xd-services.png";
 
 const Matrix = (props) => {
-
-  const getNumberOfQueries = (query) => {
-    let numberOfQueries = 0;
-
-    props.tools.forEach((tool) => {
-      tool.matrix_queries.forEach((matrixQuery) => {
-        if (matrixQuery.matrix_query === query) {
-          numberOfQueries++;
-        }
-      });
-    });
-
-    return <div className="text-little">{numberOfQueries}</div>;
-  }
   
   return (
     <table className="matrix_table">
@@ -73,7 +59,7 @@ const Matrix = (props) => {
           <td className="light_grey_square"><Link to="/drug-1d-services"><img src={drug1d} alt="drug1d" /><div className="text-little">{props.matrixDataSizes[12]}</div></Link></td>
           <td className="light_grey_square"><Link to="/drug-2d-services"><img src={drug2d} alt="drug2d" /><div className="text-little">{props.matrixDataSizes[13]}</div></Link></td>
           <td className="light_grey_square"><Link to="/drug-3d-services"><img src={drug3d} alt="drug3d" /><div className="text-little">{props.matrixDataSizes[14]}</div></Link></td>
-          <td className="light_grey_square"><Link to="/drug-4d-services"><img src={drugxd} alt="drugxd" /><div className="text-little">{props.matrixDataSizes[15]}</div></Link></td>
+          <td className="light_grey_square"><Link to="/drug-xd-services"><img src={drugxd} alt="drugxd" /><div className="text-little">{props.matrixDataSizes[15]}</div></Link></td>
         </tr>
       </tbody>
     </table>

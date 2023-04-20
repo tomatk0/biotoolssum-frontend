@@ -53,19 +53,6 @@ const tableIcons = {
 
 const Overview = (props) => {
 
-  const getToolsFromQuery = () => {
-    let tools = [];
-
-    props.tools.forEach((tool) => {
-      tool.matrix_queries.forEach((matrixQuery) => {
-        if (matrixQuery.matrix_query === props.query) {
-          tools.push(tool);
-        }
-      });
-    });
-    return tools;
-  };
-
   const listOfTools = props.tools;
 
   if (props.toolsString !== "Loading tools...") {

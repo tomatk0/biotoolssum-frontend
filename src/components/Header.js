@@ -17,7 +17,7 @@ const Header = (props) => {
   return (
     <nav className="container-header">
       <Link to="/"><img src={elixirLogo} alt="Elixir logo" /></Link>
-      {props.string === "Loading tools..." ? <div className="text">{props.string}</div> : <div className="text">{props.string} There is a total number of {props.amount} tools available.</div>}
+      {props.string === "Loading tools..." ? <div className="text">{props.string}</div> : <div className="text">{props.string}. There is a total number of {props.amount} tools available.</div>}
       <div className="wrapper">
       <Exporting data={props.data}></Exporting>
         <Menu menuButton={<MenuButton>View <FontAwesomeIcon icon={faBars} /></MenuButton>} transition>

@@ -1,51 +1,99 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import DataLifeCycle from "./DataLifeCycle";
-import Overview from "./Overview";
+import AppTypeTable from "./AppTypeTable";
 import Header from "./Header";
 
 const AppTypeCycle = (props) => {
   return (
     <>
-      <Header
-        string={`${props.toolsString}.`}
-        amount={props.numberOfTools}
-        data={props.toolsData}
-        query=""
-      ></Header>
+      {useLocation().pathname === "/" ? (
+        <Header
+          string={props.toolsString}
+          amount={props.numberOfTools}
+          data={props.toolsData}
+          query={props.query}
+        ></Header>
+      ) : null}
       <Routes>
+        <Route path="/" element={<DataLifeCycle></DataLifeCycle>}></Route>
         <Route
-          path="/"
-          element={<DataLifeCycle></DataLifeCycle>}
+          path="/reusing/*"
+          element={
+            <AppTypeTable
+              toolsData={props.toolsData}
+              toolsString={`${props.toolsString} for reusing data`}
+              numberOfTools={props.numberOfTools}
+              query="/reusing"
+            ></AppTypeTable>
+          }
         ></Route>
         <Route
-          path="/reuse/*"
-          element={<Overview></Overview>}
+          path="/planning/*"
+          element={
+            <AppTypeTable
+              toolsData={props.toolsData}
+              toolsString={`${props.toolsString} for planning data`}
+              numberOfTools={props.numberOfTools}
+              query="/planning"
+            ></AppTypeTable>
+          }
         ></Route>
         <Route
-          path="/plan/*"
-          element={<Overview></Overview>}
+          path="/collecting/*"
+          element={
+            <AppTypeTable
+              toolsData={props.toolsData}
+              toolsString={`${props.toolsString} for collecting data`}
+              numberOfTools={props.numberOfTools}
+              query="/collecting"
+            ></AppTypeTable>
+          }
         ></Route>
         <Route
-          path="/collect/*"
-          element={<Overview></Overview>}
+          path="/processing/*"
+          element={
+            <AppTypeTable
+              toolsData={props.toolsData}
+              toolsString={`${props.toolsString} for processing data`}
+              numberOfTools={props.numberOfTools}
+              query="/processing"
+            ></AppTypeTable>
+          }
         ></Route>
         <Route
-          path="/process/*"
-          element={<Overview></Overview>}
+          path="/analysing/*"
+          element={
+            <AppTypeTable
+              toolsData={props.toolsData}
+              toolsString={`${props.toolsString} for analysing data`}
+              numberOfTools={props.numberOfTools}
+              query="/analysing"
+            ></AppTypeTable>
+          }
         ></Route>
         <Route
-          path="/analyse/*"
-          element={<Overview></Overview>}
+          path="/preserving/*"
+          element={
+            <AppTypeTable
+              toolsData={props.toolsData}
+              toolsString={`${props.toolsString} for preserving data`}
+              numberOfTools={props.numberOfTools}
+              query="/preserving"
+            ></AppTypeTable>
+          }
         ></Route>
         <Route
-          path="/preserve/*"
-          element={<Overview></Overview>}
-        ></Route>
-        <Route
-          path="/share/*"
-          element={<Overview></Overview>}
+          path="/sharing/*"
+          element={
+            <AppTypeTable
+              toolsData={props.toolsData}
+              toolsString={`${props.toolsString} for sharing data`}
+              numberOfTools={props.numberOfTools}
+              query="/sharing"
+            ></AppTypeTable>
+          }
         ></Route>
       </Routes>
     </>

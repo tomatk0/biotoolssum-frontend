@@ -1,6 +1,6 @@
 export default class config {
     static getCurrentId() {
-        return "<S2ZM;D7U?";
+        return "77N5M7;6@<";
     }
     static appType() {
         // table, matrix or cycle
