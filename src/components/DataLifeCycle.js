@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const DataLifeCycle = (props) => {
     return (
         <svg version="1.1" className="svg-image" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 250.9 251" height="24em">
-        <Link to="/planning">
+        <Link to="/managing">
         <g>
             <path className="st5" d="M144.4,31.6l-16.6,32.3c17.5,0.7,33.2,8.6,44,20.9l35.7-7l14.6-32.4C199.6,18.3,166,0.8,128.2,0L144.4,31.6z"></path>
             <path className="st1" d="M166.7,24.1c0.3-0.4,0.8-0.6,1.4-0.6c4.7,0,9.4,0,14.1,0c0.5,0,1,0.2,1.4,0.6c0.3,0.3,0.4,0.7,0.4,1.2
@@ -20,7 +20,7 @@ const DataLifeCycle = (props) => {
             <path className="st1" d="M175.8,38.6l0.1,0.1c0.7,0.7,1.3,1.3,2,2c-1,0.3-1.9,0.5-2.9,0.8C175.3,40.6,175.6,39.6,175.8,38.6z"></path>
         </g>
         </Link>
-        <Link to="/collecting">
+        <Link to="/acquiring">
         <g>
             <path className="st6" d="M213.9,159.8l34.4-8.7c1.7-8.3,2.6-16.8,2.6-25.6c0-28.5-9.5-54.7-25.4-75.8L210.8,82l-35.6,7
             c7.5,10.2,11.9,22.8,11.9,36.4c0,3.7-0.3,7.3-1,10.8L213.9,159.8z"></path>
@@ -74,7 +74,7 @@ const DataLifeCycle = (props) => {
             c0-0.2,0-0.4,0.1-0.6C105.6,209,105.9,208.7,106.3,208.7z"></path>
         </g>
         </Link>
-        <Link to="/preserving">
+        <Link to="/storing">
         <g>
             <path className="st2" d="M67.6,201.7l29-21.8c-14.7-7.8-25.8-21.4-30.4-37.8L31,133L3.8,155.8c8.8,35.5,32.8,65.1,64.7,81.4L67.6,201.7
             z"></path>
@@ -123,13 +123,13 @@ const DataLifeCycle = (props) => {
             C100.6,23.4,102.6,21.2,104.5,19.1z"></path>
         </g>
         </Link>
-        <text transform="matrix(1 0 0 1 16.4197 111.8653)" className="st1">Share</text>
-        <text transform="matrix(1 0 0 1 76.3974 53.4992)" className="st1">Reuse</text>
-        <text transform="matrix(1 0 0 1 19.2957 187.4998)" className="st1">Preserve</text>
-        <text transform="matrix(1 0 0 1 90.1372 234.4302)" className="st1">Analyse</text>
-        <text transform="matrix(1 0 0 1 162.3473 208.6529)" className="st1">Process</text>
-        <text transform="matrix(1 0 0 1 159.7342 61.5168)" className="st1">Plan</text>
-        <text transform="matrix(1 0 0 1 197.0817 128.9797)" className="st1">Collect</text>
+        <text transform="matrix(1 0 0 1 16.4197 111.8653)" className="st1">Share {props.numbersOfTools[4]}</text>
+        <text transform="matrix(1 0 0 1 76.3974 53.4992)" className="st1">Reuse {props.numbersOfTools[6]}</text>
+        <text transform="matrix(1 0 0 1 19.2957 187.4998)" className="st1">Store {props.numbersOfTools[3]}</text>
+        <text transform="matrix(1 0 0 1 90.1372 234.4302)" className="st1">Analyse {props.numbersOfTools[2]}</text>
+        <text transform="matrix(1 0 0 1 162.3473 208.6529)" className="st1">Process {props.numbersOfTools[1]}</text>
+        <text transform="matrix(1 0 0 1 159.7342 61.5168)" className="st1">Manage {props.numbersOfTools[5]}</text>
+        <text transform="matrix(1 0 0 1 197.0817 128.9797)" className="st1">Acquire {props.numbersOfTools[0]}</text>
     </svg>
     )
 }

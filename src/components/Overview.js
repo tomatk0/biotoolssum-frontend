@@ -55,6 +55,14 @@ const Overview = (props) => {
 
   const listOfTools = props.tools;
 
+  const createOperations = (functions) => {
+    let operations = [];
+    functions.forEach((func) => {
+      operations = operations.concat(func.data_for_frontend.operations)
+    })
+    return operations;
+  }
+
   if (props.toolsString !== "Loading tools...") {
     return (
       <div className="display_table">
@@ -153,7 +161,7 @@ const Overview = (props) => {
                   </Tooltip>
                 </div>
                 <ul className="display_ul">
-                  {tool.tool_types.map((t) => (
+                  {tool.data_for_frontend.tool_types.map((t) => (
                     <li key={t.name} className="label">
                       <Label color="yellow">{t.name}</Label>
                     </li>
@@ -163,7 +171,7 @@ const Overview = (props) => {
             ),
             institutes: (
               <ShowMoreSimpleLists
-                list={tool.institutes}
+                list={tool.data_for_frontend.institutes}
                 listMaxSize={1}
                 attribute="name"
               ></ShowMoreSimpleLists>
@@ -174,23 +182,23 @@ const Overview = (props) => {
             ),
             topics: (
               <ShowMoreComplexLists
-                list={tool.topics}
+                list={tool.data_for_frontend.topics}
                 listMaxSize={2}
                 link="https://bio.tools/t?topic="
-                attribute="term"
+                attribute="topic"
               ></ShowMoreComplexLists>
             ),
             functions: (
               <ShowMoreComplexLists
-                list={tool.functions}
+                list={createOperations(tool.data_for_frontend.functions)}
                 listMaxSize={2}
                 link="https://bio.tools/t?operation="
-                attribute="term"
+                attribute="function"
               ></ShowMoreComplexLists>
             ),
             documentations: (
               <ShowMoreComplexLists
-                list={tool.documentations}
+                list={tool.data_for_frontend.documentations}
                 listMaxSize={3}
                 attribute="url"
               ></ShowMoreComplexLists>

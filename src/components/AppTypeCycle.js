@@ -17,37 +17,37 @@ const AppTypeCycle = (props) => {
         ></Header>
       ) : null}
       <Routes>
-        <Route path="/" element={<DataLifeCycle></DataLifeCycle>}></Route>
+        <Route path="/" element={<DataLifeCycle numbersOfTools={props.dataCycleDataSizes}></DataLifeCycle>}></Route>
         <Route
           path="/reusing/*"
           element={
             <AppTypeTable
-              toolsData={props.toolsData}
+              toolsData={props.dataCycleData[6]}
               toolsString={`${props.toolsString} for reusing data`}
-              numberOfTools={props.numberOfTools}
+              numberOfTools={props.dataCycleDataSizes[6]}
               query="/reusing"
             ></AppTypeTable>
           }
         ></Route>
         <Route
-          path="/planning/*"
+          path="/managing/*"
           element={
             <AppTypeTable
-              toolsData={props.toolsData}
-              toolsString={`${props.toolsString} for planning data`}
-              numberOfTools={props.numberOfTools}
-              query="/planning"
+              toolsData={props.dataCycleData[5]}
+              toolsString={`${props.toolsString} for managing data`}
+              numberOfTools={props.dataCycleDataSizes[5]}
+              query="/managing"
             ></AppTypeTable>
           }
         ></Route>
         <Route
-          path="/collecting/*"
+          path="/acquiring/*"
           element={
             <AppTypeTable
-              toolsData={props.toolsData}
-              toolsString={`${props.toolsString} for collecting data`}
-              numberOfTools={props.numberOfTools}
-              query="/collecting"
+              toolsData={props.dataCycleData[0]}
+              toolsString={`${props.toolsString} for acquiring data`}
+              numberOfTools={props.dataCycleDataSizes[0]}
+              query="/acquiring"
             ></AppTypeTable>
           }
         ></Route>
@@ -55,9 +55,9 @@ const AppTypeCycle = (props) => {
           path="/processing/*"
           element={
             <AppTypeTable
-              toolsData={props.toolsData}
+              toolsData={props.dataCycleData[1]}
               toolsString={`${props.toolsString} for processing data`}
-              numberOfTools={props.numberOfTools}
+              numberOfTools={props.dataCycleDataSizes[1]}
               query="/processing"
             ></AppTypeTable>
           }
@@ -66,21 +66,21 @@ const AppTypeCycle = (props) => {
           path="/analysing/*"
           element={
             <AppTypeTable
-              toolsData={props.toolsData}
+              toolsData={props.dataCycleData[2]}
               toolsString={`${props.toolsString} for analysing data`}
-              numberOfTools={props.numberOfTools}
+              numberOfTools={props.dataCycleDataSizes[2]}
               query="/analysing"
             ></AppTypeTable>
           }
         ></Route>
         <Route
-          path="/preserving/*"
+          path="/storing/*"
           element={
             <AppTypeTable
-              toolsData={props.toolsData}
-              toolsString={`${props.toolsString} for preserving data`}
-              numberOfTools={props.numberOfTools}
-              query="/preserving"
+              toolsData={props.dataCycleData[3]}
+              toolsString={`${props.toolsString} for storing data`}
+              numberOfTools={props.dataCycleDataSizes[3]}
+              query="/storing"
             ></AppTypeTable>
           }
         ></Route>
@@ -88,9 +88,9 @@ const AppTypeCycle = (props) => {
           path="/sharing/*"
           element={
             <AppTypeTable
-              toolsData={props.toolsData}
+              toolsData={props.dataCycleData[4]}
               toolsString={`${props.toolsString} for sharing data`}
-              numberOfTools={props.numberOfTools}
+              numberOfTools={props.dataCycleDataSizes[4]}
               query="/sharing"
             ></AppTypeTable>
           }

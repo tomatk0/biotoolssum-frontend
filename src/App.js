@@ -12,6 +12,8 @@ function App() {
   const [numberOfTools, setNumberOfTools] = useState(0);
   const [matrixData, setMatrixData] = useState([]);
   const [matrixDataSizes, setMatrixDataSizes] = useState([])
+  const [dataCycleData, setDataCycleDta] = useState([])
+  const [dataCycleDataSizes, setDataCycleDataSizes] = useState([])
 
   const getDataFromBackend = async () => {
     setToolsString("Loading tools...")
@@ -31,6 +33,8 @@ function App() {
     setNumberOfTools(result.data.length);
     setMatrixData(result.matrix_tools);
     setMatrixDataSizes(result.matrix_tools_sizes)
+    setDataCycleDta(result.data_cycle_tools)
+    setDataCycleDataSizes(result.data_cycle_tools_sizes)
   };
 
   useEffect(() => {
@@ -51,7 +55,7 @@ function App() {
         }
       {config.appType() === "cycle" &&
       <>
-        <AppTypeCycle toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} query=""></AppTypeCycle>
+        <AppTypeCycle toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} dataCycleData={dataCycleData} dataCycleDataSizes={dataCycleDataSizes} query=""></AppTypeCycle>
       </>
         }
     </>

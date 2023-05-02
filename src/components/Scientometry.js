@@ -55,7 +55,7 @@ const Scientometry = (props) => {
   const createData = () => {
     let data = [];
     props.tools.forEach((tool) => {
-      tool.publications.forEach((pub) => {
+      tool.data_for_frontend.publications.forEach((pub) => {
         data.push({
           nameSearch: tool.name,
           name: (
@@ -84,18 +84,6 @@ const Scientometry = (props) => {
               <Tooltip title={pub.title} placement="top">
                 <a href={`https://doi.org/${pub.doi}`}>{pub.doi}</a>
               </Tooltip>{" "}
-              {/* <Tooltip title="Citations source" placement="top">
-                {pub.citations_source !== "" ? (
-                  <a href={pub.citations_source}>
-                    <FontAwesomeIcon
-                      className="font-awesome-button"
-                      icon={faCircleQuestion}
-                    />
-                  </a>
-                ) : (
-                  <div></div>
-                )}
-              </Tooltip> */}
               <div>
                 <Helmet>
                   <script

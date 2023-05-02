@@ -102,19 +102,6 @@ const Graphs = (props) => {
         }))}
       ></MaterialTable>
     </div>
-    // <div className="graph-container">
-    //   {props.tools.map(
-    //     (tool) =>
-    //   <div>
-    //   {tool.options_for_graph !== null && (
-    //     <HighchartsReact
-    //       highcharts={Highcharts}
-    //       options={addFormatter(tool.options_for_graph)}
-    //     ></HighchartsReact>
-    //   )}
-    // </div>
-    //   )}
-    // </div>
   );
 };
 

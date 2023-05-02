@@ -23,7 +23,27 @@ const ShowMoreComplexLists = (props) => {
   return (
     <div>
       <div>
-        {props.attribute === "term" && (
+      {props.attribute === "function" && (
+          <ul className="fa-ul">
+            {showList.map((item) => (
+              <li key={item.function_id}>
+                <span className="fa-li">
+                  <FontAwesomeIcon icon={faWrench}></FontAwesomeIcon>
+                </span>
+                <a href={`${props.link}${item.term}`}>{item.term}</a>{" "}
+                <Tooltip title={`EDAM: ${item.term}`} placement="top">
+                  <a href={item.uri}>
+                    <FontAwesomeIcon
+                      className="font-awesome-button"
+                      icon={faCircleQuestion}
+                    />
+                  </a>
+                </Tooltip>
+              </li>
+            ))}
+          </ul>
+        )}
+        {props.attribute === "topic" && (
           <ul className="fa-ul">
             {showList.map((item) => (
               <li key={item.term}>

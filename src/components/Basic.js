@@ -91,6 +91,108 @@ const Basic = (props) => {
     }
   };
 
+  const createData = () => {
+    let data = [];
+    props.tools.forEach((tool) => {
+      tool.data_for_frontend.functions.forEach((func) => {
+        data.push({
+          nameSearch: tool.name,
+          name: (
+            <div>
+              <div>
+                <Tooltip
+                  title={`Data was last updated on ${tool.last_updated}. Tool's availability is ${tool.availability}% for the past 8 days since the last update.`}
+                  placement="top"
+                >
+                  <a href={tool.homepage}>{tool.name}</a>
+                </Tooltip>{" "}
+                {tool.version !== "" && tool.version}{" "}
+                <Tooltip title={`Bio.tools: ${tool.name}`} placement="top">
+                  <a href={tool.bio_link}>
+                    <FontAwesomeIcon
+                      className="font-awesome-button"
+                      icon={faCircleQuestion}
+                    />
+                  </a>
+                </Tooltip>
+              </div>
+            </div>
+          ),
+          inputs: (
+            <ShowMoreSimpleLists
+              list={func.data_for_frontend.inputs}
+              listMaxSize={2}
+              attribute="term"
+            ></ShowMoreSimpleLists>
+          ),
+          outputs: (
+            <ShowMoreSimpleLists
+              list={func.data_for_frontend.outputs}
+              listMaxSize={2}
+              attribute="term"
+            ></ShowMoreSimpleLists>
+          ),
+          operations: (
+            <ShowMoreSimpleLists
+              list={func.data_for_frontend.operations}
+              listMaxSize={2}
+              attribute="operations"
+            ></ShowMoreSimpleLists>
+          ),
+          eplatforms: (
+            <div>
+              {tool.data_for_frontend.elixir_platforms.length < 1 ? (
+                "-"
+              ) : (
+                <ul className="display_ul">
+                  {tool.data_for_frontend.elixir_platforms.map((p) => (
+                    <li key={p.name}>{p.name}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ),
+          enodes: (
+            <div>
+              {tool.data_for_frontend.elixir_nodes.length < 1 ? (
+                "-"
+              ) : (
+                <ul className="display_ul">
+                  {tool.data_for_frontend.elixir_nodes.map((n) => (
+                    <li key={n.name}>{n.name}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ),
+          ecommunities: (
+            <div>
+              {tool.data_for_frontend.elixir_communities.length < 1 ? (
+                "-"
+              ) : (
+                <ul className="display_ul">
+                  {tool.data_for_frontend.elixir_communities.map((c) => (
+                    <li key={c.name}>{c.name}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ),
+          license: <div>{tool.license !== null ? tool.license : "-"}</div>,
+          maturity: addLabelToMaturity(tool.maturity),
+          platforms: (
+            <ul className="display_ul">
+              {tool.data_for_frontend.platforms.map((p) => (
+                <li key={p.name}>{getPlatformIcon(p.name)}</li>
+              ))}
+            </ul>
+          ),
+        });
+      });
+    });
+    return data;
+  };
+
   return (
     <div className="display_table">
       <MaterialTable
@@ -105,7 +207,15 @@ const Basic = (props) => {
             title: "Name (searchable)",
             field: "name",
             cellStyle: {
-              width: "15%",
+              width: "13%",
+              textAlign: "center",
+            },
+          },
+          {
+            title: "Operations",
+            field: "operations",
+            cellStyle: {
+              width: "13%",
               textAlign: "center",
             },
           },
@@ -117,7 +227,7 @@ const Basic = (props) => {
             ),
             field: "inputs",
             cellStyle: {
-              width: "15%",
+              width: "13%",
               textAlign: "left",
             },
           },
@@ -129,7 +239,7 @@ const Basic = (props) => {
             ),
             field: "outputs",
             cellStyle: {
-              width: "15%",
+              width: "13%",
               textAlign: "left",
             },
           },
@@ -137,7 +247,7 @@ const Basic = (props) => {
             title: "E. platforms",
             field: "eplatforms",
             cellStyle: {
-              width: "11%",
+              width: "9%",
               textAlign: "center",
             },
           },
@@ -145,7 +255,7 @@ const Basic = (props) => {
             title: "E. nodes",
             field: "enodes",
             cellStyle: {
-              width: "11%",
+              width: "8%",
               textAlign: "center",
             },
           },
@@ -153,7 +263,7 @@ const Basic = (props) => {
             title: "E. communities",
             field: "ecommunities",
             cellStyle: {
-              width: "11%",
+              width: "10%",
               textAlign: "center",
             },
           },
@@ -161,7 +271,7 @@ const Basic = (props) => {
             title: "License",
             field: "license",
             cellStyle: {
-              width: "8%",
+              width: "7%",
               textAlign: "center",
             },
           },
@@ -199,92 +309,7 @@ const Basic = (props) => {
           toolbarButtonAlignment: "left",
         }}
         icons={tableIcons}
-        data={props.tools.map((tool) => ({
-          nameSearch: tool.name,
-          name: (
-            <div>
-              <div>
-                <Tooltip
-                  title={`Data was last updated on ${tool.last_updated}. Tool's availability is ${tool.availability}% for the past 8 days since the last update.`}
-                  placement="top"
-                >
-                  <a href={tool.homepage}>{tool.name}</a>
-                </Tooltip>{" "}
-                {tool.version !== "" && tool.version}{" "}
-                <Tooltip title={`Bio.tools: ${tool.name}`} placement="top">
-                  <a href={tool.bio_link}>
-                    <FontAwesomeIcon
-                      className="font-awesome-button"
-                      icon={faCircleQuestion}
-                    />
-                  </a>
-                </Tooltip>
-              </div>
-            </div>
-          ),
-          inputs: (
-            <ShowMoreSimpleLists
-              list={tool.inputs}
-              listMaxSize={3}
-              attribute="term"
-            ></ShowMoreSimpleLists>
-          ),
-          outputs: (
-            <ShowMoreSimpleLists
-              list={tool.outputs}
-              listMaxSize={3}
-              attribute="term"
-            ></ShowMoreSimpleLists>
-          ),
-          eplatforms: (
-            <div>
-              {tool.elixir_platforms.length < 1 ? (
-                "-"
-              ) : (
-                <ul className="display_ul">
-                  {tool.elixir_platforms.map((p) => (
-                    <li key={p.name}>{p.name}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ),
-          enodes: (
-            <div>
-              {tool.elixir_nodes.length < 1 ? (
-                "-"
-              ) : (
-                <ul className="display_ul">
-                  {tool.elixir_nodes.map((n) => (
-                    <li key={n.name}>{n.name}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ),
-          ecommunities: (
-            <div>
-              {tool.elixir_communities.length < 1 ? (
-                "-"
-              ) : (
-                <ul className="display_ul">
-                  {tool.elixir_communities.map((c) => (
-                    <li key={c.name}>{c.name}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ),
-          license: <div>{tool.license !== null ? tool.license : "-"}</div>,
-          maturity: addLabelToMaturity(tool.maturity),
-          platforms: (
-            <ul className="display_ul">
-              {tool.platforms.map((p) => (
-                <li key={p.name}>{getPlatformIcon(p.name)}</li>
-              ))}
-            </ul>
-          ),
-        }))}
+        data={createData()}
       />
     </div>
   );

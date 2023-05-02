@@ -15,36 +15,38 @@ const Exporting = (props) => {
       let newTool = {};
       newTool["name"] = tool.name;
       newTool["tooltypes"] = "";
-      tool.tool_types.forEach((t) => {
+      tool.data_for_frontend.tool_types.forEach((t) => {
         newTool["tooltypes"] = newTool["tooltypes"].concat(t.name + ", ")
       })
       newTool["tooltypes"] = newTool["tooltypes"].slice(0, -2);
       newTool["institutes"] = "";
-      tool.institutes.forEach((i) => {
+      tool.data_for_frontend.institutes.forEach((i) => {
         newTool["institutes"] = newTool["institutes"].concat(i.name + ", ")
       })
       newTool["institutes"] = newTool["institutes"].slice(0, -2);
       newTool["description"] = tool.description;
       newTool["publications"] = "";
-      tool.publications.forEach((pub) => {
+      tool.data_for_frontend.publications.forEach((pub) => {
         const details = pub.title + ", " + pub.authors + ", " + pub.journal + ", " + pub.publication_date;
         newTool["publications"] = newTool["publications"].concat(details + ", ")
       })
       newTool["publications"] = newTool["publications"].slice(0, -2);
       newTool["citations"] = tool.citation_count;
       newTool["topics"] = "";
-      tool.topics.forEach((t) => {
+      tool.data_for_frontend.topics.forEach((t) => {
         newTool["topics"] = newTool["topics"].concat(t.term + ", ")
       });
       newTool["topics"] = newTool["topics"].slice(0, -2);
       newTool["functions"] = "";
-      tool.functions.forEach((f) => {
-        newTool["functions"] = newTool["functions"].concat(f.term + ", ")
+      tool.data_for_frontend.functions.forEach((f) => {
+        f.data_for_frontend.operations.forEach((o) => {
+          newTool["functions"] = newTool["functions"].concat(o.term + ", ")
+        })
       });
       newTool["functions"] = newTool["functions"].slice(0, -2);
       newTool["maturity"] = tool.maturity;
       newTool["platforms"] = "";
-      tool.platforms.forEach((p) => {
+      tool.data_for_frontend.platforms.forEach((p) => {
         newTool["platforms"] = newTool["platforms"].concat(p.name + ", ")
       })
       newTool["platforms"] = newTool["platforms"].slice(0, -2);

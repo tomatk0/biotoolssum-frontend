@@ -1,10 +1,10 @@
 export default class config {
     static getCurrentId() {
-        return "77N5M7;6@<";
+        return "U[98KWF54R";
     }
     static appType() {
         // table, matrix or cycle
-        return "matrix";
+        return "table";
     }
     static showBasic() {
         return true;

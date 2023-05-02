@@ -4,8 +4,9 @@
 }
 
 .st1{
-    fill:#FFFFFF; 
+    fill:#FFFFFF;
     pointer-events: none;
+    font-size: 0.65rem !important;
 }
 
 .st2{
