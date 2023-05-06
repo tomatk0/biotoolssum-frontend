@@ -69,7 +69,7 @@ const Scientometry = (props) => {
                 </Tooltip>{" "}
                 {tool.version !== "" && tool.version}{" "}
                 <Tooltip title={`Bio.tools: ${tool.name}`} placement="top">
-                  <a href={tool.bio_link}>
+                  <a href={`https://bio.tools/${tool.bio_id}`}>
                     <FontAwesomeIcon
                       className="font-awesome-button"
                       icon={faCircleQuestion}
