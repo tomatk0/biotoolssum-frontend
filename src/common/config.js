@@ -1,6 +1,6 @@
 export default class config {
     static getCurrentId() {
-        return "HZ69T>IA?1";
+        return "3A[TMB<LOY";
     }
     static appType() {
         // table, matrix or cycle
