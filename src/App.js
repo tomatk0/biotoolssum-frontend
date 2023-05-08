@@ -17,7 +17,7 @@ function App() {
 
   const getDataFromBackend = async () => {
     setToolsString("Loading tools...")
-    const data = await fetch("http://147.251.124.170/data", {
+    const data = await fetch(`${process.env.IP_ADDRESS}/data`, {
       method: "POST",
       headers: {
         Accept: "application/json",
