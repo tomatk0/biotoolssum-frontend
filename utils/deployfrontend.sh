@@ -8,19 +8,21 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+command -v nvm
+
 CURRENT_USER=$(whoami)
 
-command -v nvm
+cd /home/$CURRENT_USER/biotoolssum-frontend
 
 nvm install 19.7.0
 
-npm install -C /home/$CURRENT_USER/biotoolssum-frontend
+npm install --legacy-peer-deps
 
-npm run build -C /home/$CURRENT_USER/biotoolssum-frontend
+npm run build
 
 sudo mkdir /var/www/build
 
-sudo scp -r /home/$CURRENT_USER/biotoolssum-frontend/build/* /var/www/build
+sudo scp -r ./build/* /var/www/build
 
 sudo touch /etc/nginx/sites-available/frontend
 
