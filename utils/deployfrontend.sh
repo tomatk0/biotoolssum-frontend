@@ -14,6 +14,10 @@ CURRENT_USER=$(whoami)
 
 cd /home/$CURRENT_USER/biotoolssum-frontend
 
+touch .env
+
+echo REACT_APP_IP_ADDRESS=$IP_ADDRESS | sudo tee .env
+
 nvm install 19.7.0
 
 npm install --legacy-peer-deps
