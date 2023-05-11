@@ -212,14 +212,6 @@ const Basic = (props) => {
             },
           },
           {
-            title: "Operations",
-            field: "operations",
-            cellStyle: {
-              width: "13%",
-              textAlign: "center",
-            },
-          },
-          {
             title: (
               <div>
                 Inputs <FontAwesomeIcon icon={faRightToBracket} />
@@ -229,6 +221,14 @@ const Basic = (props) => {
             cellStyle: {
               width: "13%",
               textAlign: "left",
+            },
+          },
+          {
+            title: "Operations",
+            field: "operations",
+            cellStyle: {
+              width: "13%",
+              textAlign: "center",
             },
           },
           {
