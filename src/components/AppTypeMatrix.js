@@ -14,6 +14,7 @@ const AppTypeMatrix = (props) => {
           amount={props.numberOfTools}
           data={props.toolsData}
           query={props.query}
+          hideMenu={props.hideMenu}
         ></Header>
       ) : null}
       {props.numberOfTools > 0 && (

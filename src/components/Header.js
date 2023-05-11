@@ -20,6 +20,7 @@ const Header = (props) => {
       {props.string === "Loading tools..." ? <div className="text">{props.string}</div> : <div className="text">{props.string}. There is a total number of {props.amount} tools available.</div>}
       <div className="wrapper">
       <Exporting data={props.data}></Exporting>
+      {props.hideMenu === true && 
         <Menu menuButton={<MenuButton>View <FontAwesomeIcon icon={faBars} /></MenuButton>} transition>
           <MenuItem><Link style={{color: 'black'}} to={props.query !== "" ? `${props.query}` : "/"}>Overview <FontAwesomeIcon icon={faHouse}></FontAwesomeIcon></Link></MenuItem>
           {config.showBasic() ? <MenuItem><Link style={{color: 'black'}} to={props.query !== "" ? `${props.query}/basic` : "/basic"}>Basic <FontAwesomeIcon icon={faGear}></FontAwesomeIcon></Link></MenuItem> : null}
@@ -27,6 +28,7 @@ const Header = (props) => {
           {config.showDevelopment() ? <MenuItem><Link style={{color: 'black'}} to={props.query !== "" ? `${props.query}/development` : "/development"}>Development <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon></Link></MenuItem> : null}
           {config.showGraphs() ? <MenuItem><Link style={{color: 'black'}} to={props.query !== "" ? `${props.query}/graphs` : "/graphs"}>Citations graphs <FontAwesomeIcon icon={faChartSimple}></FontAwesomeIcon></Link></MenuItem> : null}
         </Menu>
+      }
       </div>
     </nav>
   );

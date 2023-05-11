@@ -1,6 +1,6 @@
 export default class config {
     static getCurrentId() {
-        return "PWJX2[0X:7";
+        return "K8I:?HHRTL";
     }
     static appType() {
         // table, matrix or cycle

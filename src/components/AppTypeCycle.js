@@ -14,6 +14,7 @@ const AppTypeCycle = (props) => {
           amount={props.numberOfTools}
           data={props.toolsData}
           query={props.query}
+          hideMenu={props.hideMenu}
         ></Header>
       ) : null}
       <Routes>

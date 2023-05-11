@@ -17,6 +17,7 @@ const AppTypeTable = (props) => {
         amount={props.numberOfTools}
         data={props.toolsData}
         query={props.query}
+        hideMenu={props.hideMenu}
       ></Header>
       <Routes>
         <Route

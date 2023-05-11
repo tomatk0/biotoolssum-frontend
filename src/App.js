@@ -45,17 +45,17 @@ function App() {
     <>
       {config.appType() === "table" &&
       <>
-        <AppTypeTable toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} query=""></AppTypeTable>
+        <AppTypeTable toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} query="" hideMenu={false}></AppTypeTable>
       </>
       }
       {config.appType() === "matrix" &&
       <>
-        <AppTypeMatrix toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} matrixData={matrixData} matrixDataSizes={matrixDataSizes} query=""></AppTypeMatrix>
+        <AppTypeMatrix toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} matrixData={matrixData} matrixDataSizes={matrixDataSizes} query="" hideMenu={true}></AppTypeMatrix>
       </>
         }
       {config.appType() === "cycle" &&
       <>
-        <AppTypeCycle toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} dataCycleData={dataCycleData} dataCycleDataSizes={dataCycleDataSizes} query=""></AppTypeCycle>
+        <AppTypeCycle toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} dataCycleData={dataCycleData} dataCycleDataSizes={dataCycleDataSizes} query="" hideMenu={true}></AppTypeCycle>
       </>
         }
     </>
