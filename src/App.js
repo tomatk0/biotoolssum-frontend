@@ -17,7 +17,7 @@ function App() {
 
   const getDataFromBackend = async () => {
     setToolsString("Loading tools...")
-    const data = await fetch(`${process.env.REACT_APP_IP_ADDRESS}/data`, {
+    const data = await fetch(`http://${process.env.REACT_APP_IP_ADDRESS}/data`, {
       method: "POST",
       headers: {
         Accept: "application/json",
