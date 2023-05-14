@@ -52,9 +52,6 @@ const Exporting = (props) => {
       newTool["platforms"] = newTool["platforms"].slice(0, -2);
       newJson.push(newTool);
     });
-
-    console.log(newJson);
-
     return newJson;
   }
 

@@ -27,6 +27,7 @@ const AppTypeCycle = (props) => {
               toolsString={`${props.toolsString} for reusing data`}
               numberOfTools={props.dataCycleDataSizes[6]}
               query="/reusing"
+              hideMenu={false}
             ></AppTypeTable>
           }
         ></Route>
@@ -38,6 +39,7 @@ const AppTypeCycle = (props) => {
               toolsString={`${props.toolsString} for managing data`}
               numberOfTools={props.dataCycleDataSizes[5]}
               query="/managing"
+              hideMenu={false}
             ></AppTypeTable>
           }
         ></Route>
@@ -49,6 +51,7 @@ const AppTypeCycle = (props) => {
               toolsString={`${props.toolsString} for acquiring data`}
               numberOfTools={props.dataCycleDataSizes[0]}
               query="/acquiring"
+              hideMenu={false}
             ></AppTypeTable>
           }
         ></Route>
@@ -60,6 +63,7 @@ const AppTypeCycle = (props) => {
               toolsString={`${props.toolsString} for processing data`}
               numberOfTools={props.dataCycleDataSizes[1]}
               query="/processing"
+              hideMenu={false}
             ></AppTypeTable>
           }
         ></Route>
@@ -71,6 +75,7 @@ const AppTypeCycle = (props) => {
               toolsString={`${props.toolsString} for analysing data`}
               numberOfTools={props.dataCycleDataSizes[2]}
               query="/analysing"
+              hideMenu={false}
             ></AppTypeTable>
           }
         ></Route>
@@ -82,6 +87,7 @@ const AppTypeCycle = (props) => {
               toolsString={`${props.toolsString} for storing data`}
               numberOfTools={props.dataCycleDataSizes[3]}
               query="/storing"
+              hideMenu={false}
             ></AppTypeTable>
           }
         ></Route>
@@ -93,6 +99,7 @@ const AppTypeCycle = (props) => {
               toolsString={`${props.toolsString} for sharing data`}
               numberOfTools={props.dataCycleDataSizes[4]}
               query="/sharing"
+              hideMenu={false}
             ></AppTypeTable>
           }
         ></Route>

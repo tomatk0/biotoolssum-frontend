@@ -9,7 +9,6 @@ import Graphs from "./Graphs";
 import Header from "./Header";
 
 const AppTypeTable = (props) => {
-  console.log(props.toolsData)
   return (
     <>
       <Header

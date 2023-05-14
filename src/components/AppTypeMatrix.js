@@ -36,6 +36,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={props.toolsString}
                 numberOfTools={props.numberOfTools}
                 query="/all-services"
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -47,6 +48,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on dna sequence`}
                 numberOfTools={props.matrixDataSizes[0]}
                 query={"/dna-1d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -58,6 +60,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on dna secondary structure`}
                 numberOfTools={props.matrixDataSizes[1]}
                 query={"/dna-2d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -69,6 +72,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on dna structure`}
                 numberOfTools={props.matrixDataSizes[2]}
                 query={"/dna-3d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -80,6 +84,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on genomics`}
                 numberOfTools={props.matrixDataSizes[3]}
                 query={"/dna-xd-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -92,6 +97,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on rna sequence`}
                 numberOfTools={props.matrixDataSizes[4]}
                 query={"/rna-1d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -103,6 +109,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on rna secondary structure`}
                 numberOfTools={props.matrixDataSizes[5]}
                 query={"/rna-2d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -114,6 +121,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on rna structure`}
                 numberOfTools={props.matrixDataSizes[6]}
                 query={"/rna-3d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -125,6 +133,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on rna omics`}
                 numberOfTools={props.matrixDataSizes[7]}
                 query={"/rna-xd-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -137,6 +146,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on protein sequence`}
                 numberOfTools={props.matrixDataSizes[8]}
                 query={"/protein-1d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -148,6 +158,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on protein secondary structure`}
                 numberOfTools={props.matrixDataSizes[9]}
                 query={"/protein-2d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -159,6 +170,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on protein structure`}
                 numberOfTools={props.matrixDataSizes[10]}
                 query={"/protein-3d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -170,6 +182,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on protein omics`}
                 numberOfTools={props.matrixDataSizes[11]}
                 query={"/protein-xd-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -182,6 +195,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on small molecule primary sequence`}
                 numberOfTools={props.matrixDataSizes[12]}
                 query={"/drug-1d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -193,6 +207,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on small molecule secondary structure`}
                 numberOfTools={props.matrixDataSizes[13]}
                 query={"/drug-2d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -204,6 +219,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on small molecule structure`}
                 numberOfTools={props.matrixDataSizes[14]}
                 query={"/drug-3d-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>
@@ -215,6 +231,7 @@ const AppTypeMatrix = (props) => {
                 toolsString={`${props.toolsString} for studies on small molecule omics`}
                 numberOfTools={props.matrixDataSizes[15]}
                 query={"/drug-xd-services"}
+                hideMenu={false}
               ></AppTypeTable>
             }
           ></Route>

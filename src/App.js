@@ -43,17 +43,17 @@ function App() {
 
   return (
     <>
-      {config.appType() === "table" &&
+      {config.appType().toLowerCase() === "table" &&
       <>
         <AppTypeTable toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} query="" hideMenu={false}></AppTypeTable>
       </>
       }
-      {config.appType() === "matrix" &&
+      {config.appType().toLowerCase() === "matrix" &&
       <>
         <AppTypeMatrix toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} matrixData={matrixData} matrixDataSizes={matrixDataSizes} query="" hideMenu={true}></AppTypeMatrix>
       </>
         }
-      {config.appType() === "cycle" &&
+      {config.appType().toLowerCase() === "cycle" &&
       <>
         <AppTypeCycle toolsData={toolsData} toolsString={toolsString} numberOfTools={numberOfTools} dataCycleData={dataCycleData} dataCycleDataSizes={dataCycleDataSizes} query="" hideMenu={true}></AppTypeCycle>
       </>
